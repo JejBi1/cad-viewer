@@ -1,0 +1,8 @@
+dist/
+build/
+__pycache__/
+*.pyc
+*.spec
+# large prebuilt wheels are published as GitHub Release assets
+native/slimocp/wheels/*.whl
+native/rdxf/target/

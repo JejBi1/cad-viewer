@@ -1,0 +1,24 @@
+altgraph==0.17.5
+cadquery-ocp==8.0.1.1.0
+cadquery-ocp-proxy==8.0.1.1.0
+contourpy==1.3.3
+cycler==0.12.1
+ezdxf==1.4.4
+fonttools==4.66.1
+kiwisolver==1.5.1
+matplotlib==3.11.2
+numpy==2.4.6
+packaging==26.3
+pillow==12.3.0
+pyinstaller==6.22.3
+pyinstaller-hooks-contrib==2026.8
+pyparsing==3.3.3
+PySide6==6.11.2
+PySide6_Addons==6.11.2
+PySide6_Essentials==6.11.2
+python-dateutil==2.9.0.post0
+rdxf @ file:///tmp/rdxf-wheels/rdxf-0.1.0-cp311-abi3-manylinux_2_34_x86_64.whl#sha256=568e07d8db0280681c96be6142669228132a41b11a231e076736aa2255886e16
+shiboken6==6.11.2
+six==1.17.0
+typing_extensions==4.16.0
+vtk==9.6.2

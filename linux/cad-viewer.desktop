@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=CAD prohlížeč
+Name[en]=CAD Viewer
+GenericName=CAD Viewer
+Comment=Prohlížení a kontrola STEP, IGES, STL, DXF a DWG
+Comment[en]=View and check STEP, IGES, STL, DXF and DWG files
+Exec=cad-viewer %f
+Icon=cad-viewer
+Terminal=false
+Categories=Graphics;Engineering;Viewer;3DGraphics;
+MimeType=model/step;model/iges;model/stl;application/sla;image/vnd.dxf;image/vnd.dwg;
+Keywords=STEP;STP;IGES;STL;DXF;DWG;CAD;3D;
+StartupWMClass=cad-viewer

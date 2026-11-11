@@ -1,0 +1,215 @@
+{
+ "OCP.AIS": [
+  "AIS_ConnectedInteractive",
+  "AIS_InteractiveContext",
+  "AIS_SelectionScheme_Replace",
+  "AIS_SelectionScheme_XOR",
+  "AIS_Shaded",
+  "AIS_Shape",
+  "AIS_TextLabel",
+  "AIS_ViewCube",
+  "AIS_ViewCubeOwner",
+  "AIS_WireFrame"
+ ],
+ "OCP.Aspect": [
+  "Aspect_DisplayConnection",
+  "Aspect_GradientFillMethod_Vertical",
+  "Aspect_TOL_DASH",
+  "Aspect_TOL_SOLID",
+  "Aspect_TOM_BALL",
+  "Aspect_TOTP_LEFT_LOWER",
+  "Aspect_TOTP_RIGHT_UPPER"
+ ],
+ "OCP.BRep": [
+  "BRep_Builder",
+  "BRep_Tool"
+ ],
+ "OCP.BRepAdaptor": [
+  "BRepAdaptor_Curve",
+  "BRepAdaptor_Surface"
+ ],
+ "OCP.BRepAlgoAPI": [
+  "BRepAlgoAPI_Common"
+ ],
+ "OCP.BRepBndLib": [
+  "BRepBndLib"
+ ],
+ "OCP.BRepBuilderAPI": [
+  "BRepBuilderAPI_MakeEdge",
+  "BRepBuilderAPI_MakePolygon",
+  "BRepBuilderAPI_MakeVertex"
+ ],
+ "OCP.BRepExtrema": [
+  "BRepExtrema_DistShapeShape"
+ ],
+ "OCP.BRepGProp": [
+  "BRepGProp"
+ ],
+ "OCP.BRepMesh": [
+  "BRepMesh_IncrementalMesh"
+ ],
+ "OCP.BRepTools": [
+  "BRepTools"
+ ],
+ "OCP.BinXCAFDrivers": [
+  "BinXCAFDrivers_DocumentRetrievalDriver",
+  "BinXCAFDrivers_DocumentStorageDriver"
+ ],
+ "OCP.Bnd": [
+  "Bnd_Box"
+ ],
+ "OCP.GCPnts": [
+  "GCPnts_AbscissaPoint"
+ ],
+ "OCP.GProp": [
+  "GProp_GProps"
+ ],
+ "OCP.GeomAPI": [
+  "GeomAPI_ProjectPointOnSurf"
+ ],
+ "OCP.GeomAbs": [
+  "GeomAbs_BSplineCurve",
+  "GeomAbs_BSplineSurface",
+  "GeomAbs_C0",
+  "GeomAbs_Circle",
+  "GeomAbs_Cone",
+  "GeomAbs_Cylinder",
+  "GeomAbs_Ellipse",
+  "GeomAbs_Line",
+  "GeomAbs_Plane",
+  "GeomAbs_Sphere",
+  "GeomAbs_Torus"
+ ],
+ "OCP.GeomLProp": [
+  "GeomLProp_SLProps"
+ ],
+ "OCP.Graphic3d": [
+  "Graphic3d_BufferType",
+  "Graphic3d_Camera",
+  "Graphic3d_ClipPlane",
+  "Graphic3d_HTA_CENTER",
+  "Graphic3d_NameOfMaterial_Plastified",
+  "Graphic3d_SequenceOfHClipPlane",
+  "Graphic3d_TMF_2d",
+  "Graphic3d_TMF_TriedronPers",
+  "Graphic3d_TransformPers",
+  "Graphic3d_VTA_BOTTOM",
+  "Graphic3d_ZLayerId_Top",
+  "Graphic3d_ZLayerId_TopOSD",
+  "Graphic3d_ZLayerId_Topmost"
+ ],
+ "OCP.IFSelect": [
+  "IFSelect_RetDone"
+ ],
+ "OCP.IGESCAFControl": [
+  "IGESCAFControl_Reader"
+ ],
+ "OCP.IMeshTools": [
+  "IMeshTools_MeshAlgoType",
+  "IMeshTools_Parameters"
+ ],
+ "OCP.Image": [
+  "Image_AlienPixMap"
+ ],
+ "OCP.OpenGl": [
+  "OpenGl_GraphicDriver"
+ ],
+ "OCP.Prs3d": [
+  "Prs3d_Drawer",
+  "Prs3d_LineAspect",
+  "Prs3d_PointAspect"
+ ],
+ "OCP.Quantity": [
+  "Quantity_Color",
+  "Quantity_TOC_sRGB"
+ ],
+ "OCP.RWStl": [
+  "RWStl"
+ ],
+ "OCP.STEPCAFControl": [
+  "STEPCAFControl_Reader"
+ ],
+ "OCP.TCollection": [
+  "TCollection_AsciiString",
+  "TCollection_ExtendedString"
+ ],
+ "OCP.TDF": [
+  "TDF_Label",
+  "TDF_Tool"
+ ],
+ "OCP.TDataStd": [
+  "TDataStd_Name"
+ ],
+ "OCP.TDocStd": [
+  "TDocStd_Document"
+ ],
+ "OCP.TopAbs": [
+  "TopAbs_EDGE",
+  "TopAbs_FACE",
+  "TopAbs_REVERSED",
+  "TopAbs_SOLID",
+  "TopAbs_VERTEX"
+ ],
+ "OCP.TopExp": [
+  "TopExp",
+  "TopExp_Explorer"
+ ],
+ "OCP.TopLoc": [
+  "TopLoc_Location"
+ ],
+ "OCP.TopoDS": [
+  "TopoDS",
+  "TopoDS_Compound",
+  "TopoDS_Face"
+ ],
+ "OCP.V3d": [
+  "V3d_TypeOfOrientation_Zup_AxoRight",
+  "V3d_TypeOfOrientation_Zup_Back",
+  "V3d_TypeOfOrientation_Zup_Bottom",
+  "V3d_TypeOfOrientation_Zup_Front",
+  "V3d_TypeOfOrientation_Zup_Left",
+  "V3d_TypeOfOrientation_Zup_Right",
+  "V3d_TypeOfOrientation_Zup_Top",
+  "V3d_Viewer",
+  "V3d_Xneg",
+  "V3d_Xpos",
+  "V3d_Yneg",
+  "V3d_Ypos",
+  "V3d_Zneg",
+  "V3d_Zpos"
+ ],
+ "OCP.WNT": [
+  "WNT_Window"
+ ],
+ "OCP.XCAFApp": [
+  "XCAFApp_Application"
+ ],
+ "OCP.XCAFDoc": [
+  "XCAFDoc_ColorGen",
+  "XCAFDoc_ColorSurf",
+  "XCAFDoc_ColorTool",
+  "XCAFDoc_DocumentTool",
+  "XCAFDoc_ShapeTool"
+ ],
+ "OCP.XCAFPrs": [
+  "XCAFPrs_AISObject"
+ ],
+ "OCP.Xw": [
+  "Xw_Window"
+ ],
+ "OCP.collections": [
+  "DataMap_TCollection_AsciiString_TCollection_AsciiString",
+  "IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher",
+  "List_TopoDS_Shape",
+  "Sequence_TDF_Label",
+  "Vec2_int"
+ ],
+ "OCP.gp": [
+  "gp_Ax1",
+  "gp_Dir",
+  "gp_Pln",
+  "gp_Pnt",
+  "gp_Trsf",
+  "gp_Vec"
+ ]
+}

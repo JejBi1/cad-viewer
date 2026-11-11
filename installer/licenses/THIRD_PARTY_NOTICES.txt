@@ -1,0 +1,39 @@
+CAD prohlížeč – knihovny třetích stran
+======================================
+
+Program používá následující knihovny. Jsou připojeny dynamicky (samostatné
+soubory DLL/PYD ve složce _internal) a lze je nahradit jinou kompatibilní verzí.
+
+Open CASCADE Technology (OCCT) 8.0
+  Licence: GNU LGPL 2.1 s dodatkem Open CASCADE (LGPL-2.1-only.txt)
+  Zdrojový kód: https://github.com/Open-Cascade-SAS/OCCT
+
+OCP – Python bindings pro OCCT (balíček cadquery-ocp 8.0.1)
+  Licence: Apache 2.0 (OCP-bindings-Apache-2.0.txt)
+  Zdrojový kód: https://github.com/CadQuery/OCP
+
+Qt 6 / PySide6 / Shiboken6 6.11
+  Licence: GNU LGPL 3.0 (LGPL-3.0-only.txt, GPL-3.0-only.txt)
+  Zdrojový kód: https://code.qt.io/  a  https://download.qt.io/official_releases/QtForPython/
+
+VTK 9.6 (knihovny vyžadované OCP)
+  Licence: BSD 3-Clause (VTK-BSD-3.txt)
+  Zdrojový kód: https://gitlab.kitware.com/vtk/vtk
+
+ezdxf 1.4 (čtení a vykreslování DXF)
+  Licence: MIT – https://github.com/mozman/ezdxf/blob/master/LICENSE
+
+LibreDWG 0.14 (převod DWG -> DXF; samostatné programy dwg2dxf.exe / dwgbmp.exe
+ve složce _internal\libredwg, spouštěné jako externí proces)
+  Licence: GNU GPL 3.0 (GPL-3.0-only.txt)
+  Zdrojový kód: https://github.com/LibreDWG/libredwg/releases/tag/0.14.8601
+
+NumPy, Pillow, fontTools (závislosti ezdxf)
+  Licence: BSD-3-Clause (NumPy), MIT-CMU / HPND (Pillow), MIT (fontTools)
+
+Python 3.11
+  Licence: Python Software Foundation License – https://docs.python.org/3/license.html
+
+PyInstaller (zavaděč programu)
+  Licence: GPL 2.0 s výjimkou pro zavaděč (povoluje šíření bez omezení)
+  https://github.com/pyinstaller/pyinstaller

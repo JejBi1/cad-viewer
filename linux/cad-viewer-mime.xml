@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MIME types for CAD prohlížeč (merged with shared-mime-info; harmless if the types already exist) -->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="model/step">
+    <comment>STEP 3D model</comment>
+    <comment xml:lang="cs">3D model STEP</comment>
+    <glob pattern="*.step"/>
+    <glob pattern="*.stp"/>
+    <glob pattern="*.STEP"/>
+    <glob pattern="*.STP"/>
+    <magic priority="60"><match type="string" offset="0" value="ISO-10303-21"/></magic>
+  </mime-type>
+  <mime-type type="model/iges">
+    <comment>IGES 3D model</comment>
+    <comment xml:lang="cs">3D model IGES</comment>
+    <glob pattern="*.iges"/>
+    <glob pattern="*.igs"/>
+    <glob pattern="*.IGES"/>
+    <glob pattern="*.IGS"/>
+  </mime-type>
+  <mime-type type="model/stl">
+    <comment>STL mesh</comment>
+    <comment xml:lang="cs">Síť STL</comment>
+    <alias type="application/sla"/>
+    <glob pattern="*.stl"/>
+    <glob pattern="*.STL"/>
+  </mime-type>
+  <mime-type type="image/vnd.dxf">
+    <comment>DXF drawing</comment>
+    <comment xml:lang="cs">Výkres DXF</comment>
+    <glob pattern="*.dxf"/>
+    <glob pattern="*.DXF"/>
+  </mime-type>
+  <mime-type type="image/vnd.dwg">
+    <comment>DWG drawing</comment>
+    <comment xml:lang="cs">Výkres DWG</comment>
+    <glob pattern="*.dwg"/>
+    <glob pattern="*.DWG"/>
+  </mime-type>
+</mime-info>

@@ -1,0 +1,2383 @@
+name = "OCP"
+input_folder = "./opencascade"
+output_folder = "./OCP"
+template_path = "./templates"
+
+additional_files = ["pystreambuf.h","vtk_pybind.h"]
+
+pats = ["{}_*.hxx","{}.hxx"]
+
+exclude_namespaces = [
+"std",
+"opencascade",
+"IMeshData",
+"IVtkTools",
+"BVH",
+"OpenGl",
+"OpenGl_HashMapInitializer",
+"Graphic3d_TransformUtils"
+]
+
+modules = [
+"NCollection",
+"AIS",
+"Standard",
+"gp",
+"math",
+"BVH",
+"TColgp",
+"OSD",
+"Quantity",
+"Storage",
+"TCollection",
+"TColStd",
+"Message",
+"TopLoc",
+"Poly",
+"Precision",
+"GeomAbs",
+"Bnd",
+"Adaptor2d",
+"Geom2d",
+"Adaptor3d",
+"GProp",
+"Geom",
+"GeomAdaptor",
+"GeomLProp",
+"TopAbs",
+"Extrema",
+"GCPnts",
+"TopoDS",
+"BRep",
+"BRepAdaptor",
+"TopTools",
+"BRepTools",
+"TopExp",
+"GeomAPI",
+"BRepBndLib",
+"BRepBuilderAPI",
+"BRepExtrema",
+"BRepGProp",
+"BRepMesh",
+"BOPAlgo",
+"BRepAlgoAPI",
+"Aspect",
+"Font",
+"Image",
+"Graphic3d",
+"Prs3d",
+"PrsMgr",
+"SelectMgr",
+"StdSelect",
+"V3d",
+"OpenGl",
+"CDM",
+"CDF",
+"PCDM",
+"TDF",
+"TDataStd",
+"TDocStd",
+"BinLDrivers",
+"BinDrivers",
+"RWStl",
+"IGESControl",
+"XSControl",
+"IFSelect",
+"STEPCAFControl",
+"IGESCAFControl",
+"XCAFApp",
+"XCAFDoc",
+"XCAFPrs",
+"BinXCAFDrivers",
+"DE",
+"IMeshTools",
+]
+
+exclude = [
+"Standard_Handle.hxx","Standard", "Standard_MemoryUtils.hxx",
+"math_GaussPoints.hxx","NCollection_Shared.hxx","OSD_WNT.hxx",
+"Geom2dToIGES","BRepGProp_Gauss.hxx","BRepLib_CheckCurveOnSurface.hxx",
+"BVH_Types.hxx","BVH_RadixSorter.hxx","BVH_IndexedBoxSet.hxx",
+"Aspect_VKeySet.hxx","BOPTools_PairSelector.hxx","AIS_DataMapOfSelStat.hxx",
+"AIS_DataMapIteratorOfDataMapOfSelStat.hxx","BOPDS_Iterator.hxx","BOPDS_IteratorSI.hxx",
+"BRepBlend_AppSurface.hxx","BRepMesh_BaseMeshAlgo.hxx","BRepMesh_ConstrainedBaseMeshAlgo.hxx",
+"BRepMesh_CustomBaseMeshAlgo.hxx","BRepMesh_CustomDelaunayBaseMeshAlgo.hxx",
+"BRepMesh_DefaultRangeSplitter.hxx","BRepMesh_DelaunayBaseMeshAlgo.hxx",
+"BRepMesh_DelaunayDeflectionControlMeshAlgo.hxx","BRepMesh_DelaunayNodeInsertionMeshAlgo.hxx",
+"BRepMesh_NodeInsertionMeshAlgo.hxx","BRepMesh_BoundaryParamsRangeSplitter.hxx",
+"BRepMesh_ConeRangeSplitter.hxx","BRepMesh_CylinderRangeSplitter.hxx",
+"BRepMesh_NURBSRangeSplitter.hxx","BRepMesh_SphereRangeSplitter.hxx",
+"BRepMesh_TorusRangeSplitter.hxx","BRepMesh_UVParamRangeSplitter.hxx","OpenGl_GLESExtensions.hxx",
+"IVtk_IShapePickerAlgo.hxx","ProjLib_HCompProjectedCurve.hxx","ProjLib_HProjectedCurve.hxx",
+"OSD_StreamBuffer.hxx","IntSurf_Allocator.hxx","Extrema_GGenExtCC.hxx",
+"NCollection_ForwardRange.hxx",
+"Graphic3d_MapIteratorOfMapOfStructure.hxx",
+"TObj_Container.hxx",
+"BOPDS_DataMapOfIntegerListOfPaveBlock.hxx",
+"BOPDS_VectorOfListOfPaveBlock.hxx",
+"BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock.hxx",
+"BOPDS_DataMapOfPaveBlockListOfPaveBlock.hxx",
+"NCollection_ItemsView.hxx",
+"AIS_DataMapOfIOStatus.hxx",
+"AIS_DataMapOfShapeDrawer.hxx",
+"AIS_ListOfInteractive.hxx",
+"AIS_NArray1OfEntityOwner.hxx",
+"AIS_NListOfEntityOwner.hxx",
+"AdvApp2Var_SequenceOfNode.hxx",
+"AdvApp2Var_SequenceOfPatch.hxx",
+"AdvApp2Var_SequenceOfStrip.hxx",
+"AdvApp2Var_Strip.hxx",
+"AppDef_Array1OfMultiPointConstraint.hxx",
+"AppDef_HArray1OfMultiPointConstraint.hxx",
+"AppParCurves_Array1OfConstraintCouple.hxx",
+"AppParCurves_Array1OfMultiBSpCurve.hxx",
+"AppParCurves_Array1OfMultiCurve.hxx",
+"AppParCurves_Array1OfMultiPoint.hxx",
+"AppParCurves_HArray1OfConstraintCouple.hxx",
+"AppParCurves_HArray1OfMultiBSpCurve.hxx",
+"AppParCurves_HArray1OfMultiCurve.hxx",
+"AppParCurves_HArray1OfMultiPoint.hxx",
+"AppParCurves_SequenceOfMultiBSpCurve.hxx",
+"AppParCurves_SequenceOfMultiCurve.hxx",
+"Approx_Array1OfAdHSurface.hxx",
+"Approx_Array1OfGTrsf2d.hxx",
+"Approx_HArray1OfAdHSurface.hxx",
+"Approx_HArray1OfGTrsf2d.hxx",
+"Approx_SequenceOfHArray1OfReal.hxx",
+"Aspect_SequenceOfColor.hxx",
+"Aspect_TouchMap.hxx",
+"BOPAlgo_ListOfCheckResult.hxx",
+"BOPDS_DataMapOfIntegerListOfPaveBlock.hxx",
+"BOPDS_DataMapOfPaveBlockCommonBlock.hxx",
+"BOPDS_DataMapOfPaveBlockListOfInteger.hxx",
+"BOPDS_DataMapOfPaveBlockListOfPaveBlock.hxx",
+"BOPDS_DataMapOfShapeCoupleOfPaveBlocks.hxx",
+"BOPDS_IndexedDataMapOfPaveBlockListOfInteger.hxx",
+"BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock.hxx",
+"BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks.hxx",
+"BOPDS_IndexedMapOfPaveBlock.hxx",
+"BOPDS_ListOfPave.hxx",
+"BOPDS_MapOfCommonBlock.hxx",
+"BOPDS_MapOfPair.hxx",
+"BOPDS_MapOfPave.hxx",
+"BOPDS_MapOfPaveBlock.hxx",
+"BOPDS_VectorOfCurve.hxx",
+"BOPDS_VectorOfFaceInfo.hxx",
+"BOPDS_VectorOfIndexRange.hxx",
+"BOPDS_VectorOfInterfEE.hxx",
+"BOPDS_VectorOfInterfEF.hxx",
+"BOPDS_VectorOfInterfEZ.hxx",
+"BOPDS_VectorOfInterfFF.hxx",
+"BOPDS_VectorOfInterfFZ.hxx",
+"BOPDS_VectorOfInterfVE.hxx",
+"BOPDS_VectorOfInterfVF.hxx",
+"BOPDS_VectorOfInterfVV.hxx",
+"BOPDS_VectorOfInterfVZ.hxx",
+"BOPDS_VectorOfInterfZZ.hxx",
+"BOPDS_VectorOfListOfPaveBlock.hxx",
+"BOPDS_VectorOfPair.hxx",
+"BOPDS_VectorOfPave.hxx",
+"BOPDS_VectorOfPoint.hxx",
+"BOPDS_VectorOfShapeInfo.hxx",
+"BOPDS_VectorOfVectorOfPair.hxx",
+"BOPTools_IndexedDataMapOfSetShape.hxx",
+"BOPTools_ListOfConnexityBlock.hxx",
+"BOPTools_ListOfCoupleOfShape.hxx",
+"BOPTools_MapOfSet.hxx",
+"BRepAdaptor_Array1OfCurve.hxx",
+"BRepAdaptor_HArray1OfCurve.hxx",
+"BRepBlend_SequenceOfLine.hxx",
+"BRepBlend_SequenceOfPointOnRst.hxx",
+"BRepBuilderAPI_CellFilter.hxx",
+"BRepCheck_DataMapOfShapeListOfStatus.hxx",
+"BRepCheck_IndexedDataMapOfShapeResult.hxx",
+"BRepCheck_ListOfStatus.hxx",
+"BRepClass3d_MapOfInter.hxx",
+"BRepExtrema_MapOfIntegerPackedMapOfInteger.hxx",
+"BRepExtrema_SeqOfSolution.hxx",
+"BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx",
+"BRepFill_DataMapOfNodeShape.hxx",
+"BRepFill_DataMapOfOrientedShapeListOfShape.hxx",
+"BRepFill_DataMapOfShapeDataMapOfShapeListOfShape.hxx",
+"BRepFill_DataMapOfShapeHArray2OfShape.hxx",
+"BRepFill_DataMapOfShapeSequenceOfPnt.hxx",
+"BRepFill_DataMapOfShapeSequenceOfReal.hxx",
+"BRepFill_IndexedDataMapOfOrientedShapeListOfShape.hxx",
+"BRepFill_ListOfOffsetWire.hxx",
+"BRepFill_SequenceOfEdgeFaceAndOrder.hxx",
+"BRepFill_SequenceOfFaceAndOrder.hxx",
+"BRepFill_SequenceOfSection.hxx",
+"BRepMAT2d_DataMapOfBasicEltShape.hxx",
+"BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.hxx",
+"BRepOffsetAPI_SequenceOfSequenceOfReal.hxx",
+"BRepOffsetAPI_SequenceOfSequenceOfShape.hxx",
+"BRepOffset_DataMapOfShapeListOfInterval.hxx",
+"BRepOffset_DataMapOfShapeMapOfShape.hxx",
+"BRepOffset_DataMapOfShapeOffset.hxx",
+"BRepOffset_ListOfInterval.hxx",
+"BRepTools_MapOfVertexPnt2d.hxx",
+"BRepTopAdaptor_MapOfShapeTool.hxx",
+"BRep_ListOfCurveRepresentation.hxx",
+"BRep_ListOfPointRepresentation.hxx",
+"BinLDrivers_VectorOfDocumentSection.hxx",
+"BinMDF_StringIdMap.hxx",
+"BinMDF_TypeADriverMap.hxx",
+"BinMDF_TypeIdMap.hxx",
+"BinObjMgt_SRelocationTable.hxx",
+"Blend_SequenceOfPoint.hxx",
+"Bnd_Array1OfBox.hxx",
+"Bnd_Array1OfBox2d.hxx",
+"Bnd_Array1OfSphere.hxx",
+"Bnd_HArray1OfBox.hxx",
+"Bnd_HArray1OfBox2d.hxx",
+"Bnd_HArray1OfSphere.hxx",
+"CDM_ListOfDocument.hxx",
+"CDM_ListOfReferences.hxx",
+"CDM_MapOfDocument.hxx",
+"CDM_NamesDirectory.hxx",
+"ChFiDS_HData.hxx",
+"ChFiDS_IndexedDataMapOfVertexListOfStripe.hxx",
+"ChFiDS_ListOfHElSpine.hxx",
+"ChFiDS_ListOfStripe.hxx",
+"ChFiDS_Regularities.hxx",
+"ChFiDS_SecArray1.hxx",
+"ChFiDS_SecHArray1.hxx",
+"ChFiDS_SequenceOfSpine.hxx",
+"ChFiDS_SequenceOfSurfData.hxx",
+"ChFiDS_StripeArray1.hxx",
+"ChFiKPart_RstMap.hxx",
+"Contap_SequenceOfIWLineOfTheIWalking.hxx",
+"Contap_SequenceOfPathPointOfTheSearch.hxx",
+"Contap_SequenceOfSegmentOfTheSearch.hxx",
+"Contap_TheHSequenceOfPoint.hxx",
+"Contap_TheSequenceOfLine.hxx",
+"Contap_TheSequenceOfPoint.hxx",
+"Convert_SequenceOfArray1OfPoles.hxx",
+"Convert_SequenceOfArray1OfPoles2d.hxx",
+"DBRep_ListOfEdge.hxx",
+"DBRep_ListOfFace.hxx",
+"DBRep_ListOfHideData.hxx",
+"DDF_TransactionStack.hxx",
+"DNaming_DataMapOfShapeOfName.hxx",
+"Draft_IndexedDataMapOfEdgeEdgeInfo.hxx",
+"Draft_IndexedDataMapOfFaceFaceInfo.hxx",
+"Draft_IndexedDataMapOfVertexVertexInfo.hxx",
+"Draw_MapOfAsciiString.hxx",
+"Draw_SequenceOfDrawable3D.hxx",
+"ExprIntrp_SequenceOfNamedExpression.hxx",
+"ExprIntrp_SequenceOfNamedFunction.hxx",
+"ExprIntrp_StackOfGeneralExpression.hxx",
+"ExprIntrp_StackOfGeneralFunction.hxx",
+"ExprIntrp_StackOfGeneralRelation.hxx",
+"Expr_Array1OfGeneralExpression.hxx",
+"Expr_Array1OfSingleRelation.hxx",
+"Expr_MapOfNamedUnknown.hxx",
+"Expr_SequenceOfGeneralExpression.hxx",
+"Expr_SequenceOfGeneralRelation.hxx",
+"Extrema_Array1OfPOnCurv.hxx",
+"Extrema_Array1OfPOnCurv2d.hxx",
+"Extrema_Array1OfPOnSurf.hxx",
+"Extrema_Array2OfPOnCurv.hxx",
+"Extrema_Array2OfPOnCurv2d.hxx",
+"Extrema_Array2OfPOnSurf.hxx",
+"Extrema_Array2OfPOnSurfParams.hxx",
+"Extrema_HArray1OfPOnCurv.hxx",
+"Extrema_HArray1OfPOnCurv2d.hxx",
+"Extrema_HArray1OfPOnSurf.hxx",
+"Extrema_HArray2OfPOnCurv.hxx",
+"Extrema_HArray2OfPOnCurv2d.hxx",
+"Extrema_HArray2OfPOnSurf.hxx",
+"Extrema_HUBTreeOfSphere.hxx",
+"Extrema_SequenceOfPOnCurv.hxx",
+"Extrema_SequenceOfPOnCurv2d.hxx",
+"Extrema_SequenceOfPOnSurf.hxx",
+"FEmTool_AssemblyTable.hxx",
+"FEmTool_HAssemblyTable.hxx",
+"FEmTool_ListOfVectors.hxx",
+"FEmTool_SeqOfLinConstr.hxx",
+"Font_NListOfSystemFont.hxx",
+"GccEnt_Array1OfPosition.hxx",
+"Geom2dHatch_Hatchings.hxx",
+"Geom2dHatch_MapOfElements.hxx",
+"GeomFill_Array1OfLocationLaw.hxx",
+"GeomFill_Array1OfSectionLaw.hxx",
+"GeomFill_HArray1OfLocationLaw.hxx",
+"GeomFill_HArray1OfSectionLaw.hxx",
+"GeomFill_HSequenceOfAx2.hxx",
+"GeomFill_SequenceOfAx2.hxx",
+"GeomFill_SequenceOfTrsf.hxx",
+"GeomInt_SequenceOfParameterAndOrientation.hxx",
+"GeomInt_VectorOfReal.hxx",
+"GeomLib_Array1OfMat.hxx",
+"GeomPlate_Array1OfHCurve.hxx",
+"GeomPlate_Array1OfSequenceOfReal.hxx",
+"GeomPlate_HArray1OfHCurve.hxx",
+"GeomPlate_HArray1OfSequenceOfReal.hxx",
+"GeomPlate_HSequenceOfCurveConstraint.hxx",
+"GeomPlate_HSequenceOfPointConstraint.hxx",
+"GeomPlate_SequenceOfAij.hxx",
+"GeomPlate_SequenceOfCurveConstraint.hxx",
+"GeomPlate_SequenceOfPointConstraint.hxx",
+"Geom_HSequenceOfBSplineSurface.hxx",
+"Geom_SequenceOfBSplineSurface.hxx",
+"Graphic3d_MapIteratorOfMapOfStructure.hxx",
+"Graphic3d_MapOfObject.hxx",
+"Graphic3d_Mat4.hxx",
+"Graphic3d_Mat4d.hxx",
+"Graphic3d_NMapOfTransient.hxx",
+"Graphic3d_SequenceOfGroup.hxx",
+"Graphic3d_SequenceOfStructure.hxx",
+"Graphic3d_Vec2.hxx",
+"Graphic3d_Vec3.hxx",
+"Graphic3d_Vec4.hxx",
+"HLRAlgo_Array1OfPHDat.hxx",
+"HLRAlgo_Array1OfPINod.hxx",
+"HLRAlgo_Array1OfPISeg.hxx",
+"HLRAlgo_Array1OfTData.hxx",
+"HLRAlgo_HArray1OfPHDat.hxx",
+"HLRAlgo_HArray1OfPINod.hxx",
+"HLRAlgo_HArray1OfPISeg.hxx",
+"HLRAlgo_HArray1OfTData.hxx",
+"HLRAlgo_InterferenceList.hxx",
+"HLRAlgo_ListOfBPoint.hxx",
+"HLRBRep_Array1OfEData.hxx",
+"HLRBRep_Array1OfFData.hxx",
+"HLRBRep_ListOfBPnt2D.hxx",
+"HLRBRep_ListOfBPoint.hxx",
+"HLRBRep_SeqOfShapeBounds.hxx",
+"HLRTopoBRep_DataMapOfShapeFaceData.hxx",
+"HLRTopoBRep_ListOfVData.hxx",
+"HLRTopoBRep_MapOfShapeListOfVData.hxx",
+"HatchGen_Domains.hxx",
+"HatchGen_PointsOnElement.hxx",
+"HatchGen_PointsOnHatching.hxx",
+"Hatch_SequenceOfLine.hxx",
+"Hatch_SequenceOfParameter.hxx",
+"IFSelect_HSeqOfSelection.hxx",
+"IFSelect_SequenceOfAppliedModifiers.hxx",
+"IFSelect_SequenceOfGeneralModifier.hxx",
+"IFSelect_SequenceOfInterfaceModel.hxx",
+"IFSelect_TSeqOfDispatch.hxx",
+"IFSelect_TSeqOfSelection.hxx",
+"IGESAppli_Array1OfFiniteElement.hxx",
+"IGESAppli_Array1OfFlow.hxx",
+"IGESAppli_Array1OfNode.hxx",
+"IGESAppli_HArray1OfFiniteElement.hxx",
+"IGESAppli_HArray1OfFlow.hxx",
+"IGESAppli_HArray1OfNode.hxx",
+"IGESBasic_Array1OfLineFontEntity.hxx",
+"IGESBasic_Array2OfHArray1OfReal.hxx",
+"IGESBasic_HArray1OfLineFontEntity.hxx",
+"IGESBasic_HArray2OfHArray1OfReal.hxx",
+"IGESData_Array1OfDirPart.hxx",
+"IGESData_Array1OfIGESEntity.hxx",
+"IGESData_HArray1OfIGESEntity.hxx",
+"IGESDefs_Array1OfTabularData.hxx",
+"IGESDefs_HArray1OfTabularData.hxx",
+"IGESDimen_Array1OfGeneralNote.hxx",
+"IGESDimen_Array1OfLeaderArrow.hxx",
+"IGESDimen_HArray1OfGeneralNote.hxx",
+"IGESDimen_HArray1OfLeaderArrow.hxx",
+"IGESDraw_Array1OfConnectPoint.hxx",
+"IGESDraw_Array1OfViewKindEntity.hxx",
+"IGESDraw_HArray1OfConnectPoint.hxx",
+"IGESDraw_HArray1OfViewKindEntity.hxx",
+"IGESGeom_Array1OfBoundary.hxx",
+"IGESGeom_Array1OfCurveOnSurface.hxx",
+"IGESGeom_Array1OfTransformationMatrix.hxx",
+"IGESGeom_HArray1OfBoundary.hxx",
+"IGESGeom_HArray1OfCurveOnSurface.hxx",
+"IGESGeom_HArray1OfTransformationMatrix.hxx",
+"IGESGraph_Array1OfColor.hxx",
+"IGESGraph_Array1OfTextDisplayTemplate.hxx",
+"IGESGraph_Array1OfTextFontDef.hxx",
+"IGESGraph_HArray1OfColor.hxx",
+"IGESGraph_HArray1OfTextDisplayTemplate.hxx",
+"IGESGraph_HArray1OfTextFontDef.hxx",
+"IGESSolid_Array1OfFace.hxx",
+"IGESSolid_Array1OfLoop.hxx",
+"IGESSolid_Array1OfShell.hxx",
+"IGESSolid_Array1OfVertexList.hxx",
+"IGESSolid_HArray1OfFace.hxx",
+"IGESSolid_HArray1OfLoop.hxx",
+"IGESSolid_HArray1OfShell.hxx",
+"IGESSolid_HArray1OfVertexList.hxx",
+"IntAna_ListOfCurve.hxx",
+"IntCurveSurface_SequenceOfPnt.hxx",
+"IntCurveSurface_SequenceOfSeg.hxx",
+"IntPatch_SequenceOfIWLineOfTheIWalking.hxx",
+"IntPatch_SequenceOfLine.hxx",
+"IntPatch_SequenceOfPathPointOfTheSOnBounds.hxx",
+"IntPatch_SequenceOfPoint.hxx",
+"IntPatch_SequenceOfSegmentOfTheSOnBounds.hxx",
+"IntPolyh_ListOfCouples.hxx",
+"IntPolyh_SeqOfStartPoints.hxx",
+"IntRes2d_SequenceOfIntersectionPoint.hxx",
+"IntRes2d_SequenceOfIntersectionSegment.hxx",
+"IntSurf_ListOfPntOn2S.hxx",
+"IntSurf_SequenceOfCouple.hxx",
+"IntSurf_SequenceOfInteriorPoint.hxx",
+"IntSurf_SequenceOfPathPoint.hxx",
+"IntSurf_SequenceOfPntOn2S.hxx",
+"IntTools_Array1OfRange.hxx",
+"IntTools_Array1OfRoots.hxx",
+"IntTools_DataMapOfCurveSampleBox.hxx",
+"IntTools_DataMapOfSurfaceSampleBox.hxx",
+"IntTools_ListOfBox.hxx",
+"IntTools_ListOfCurveRangeSample.hxx",
+"IntTools_ListOfSurfaceRangeSample.hxx",
+"IntTools_MapOfCurveSample.hxx",
+"IntTools_MapOfSurfaceSample.hxx",
+"IntTools_SequenceOfCommonPrts.hxx",
+"IntTools_SequenceOfCurves.hxx",
+"IntTools_SequenceOfPntOn2Faces.hxx",
+"IntTools_SequenceOfRanges.hxx",
+"IntTools_SequenceOfRoots.hxx",
+"Interface_Array1OfFileParameter.hxx",
+"Interface_Array1OfHAsciiString.hxx",
+"Interface_DataMapOfTransientInteger.hxx",
+"Interface_HArray1OfHAsciiString.hxx",
+"Interface_HSequenceOfCheck.hxx",
+"Interface_IndexedMapOfAsciiString.hxx",
+"Interface_SequenceOfCheck.hxx",
+"Interface_VectorOfFileParameter.hxx",
+"Intf_Array1OfLin.hxx",
+"Intf_SeqOfSectionLine.hxx",
+"Intf_SeqOfSectionPoint.hxx",
+"Intf_SeqOfTangentZone.hxx",
+"Intrv_SequenceOfInterval.hxx",
+"LProp_SequenceOfCIType.hxx",
+"Law_Laws.hxx",
+"LocOpe_DataMapOfShapePnt.hxx",
+"LocOpe_SequenceOfCirc.hxx",
+"LocOpe_SequenceOfLin.hxx",
+"LocOpe_SequenceOfPntFace.hxx",
+"MAT2d_Array2OfConnexion.hxx",
+"MAT2d_DataMapOfBiIntInteger.hxx",
+"MAT2d_DataMapOfBiIntSequenceOfInteger.hxx",
+"MAT2d_DataMapOfIntegerBisec.hxx",
+"MAT2d_DataMapOfIntegerConnexion.hxx",
+"MAT2d_DataMapOfIntegerPnt2d.hxx",
+"MAT2d_DataMapOfIntegerSequenceOfConnexion.hxx",
+"MAT2d_DataMapOfIntegerVec2d.hxx",
+"MAT2d_SequenceOfConnexion.hxx",
+"MAT2d_SequenceOfSequenceOfCurve.hxx",
+"MAT2d_SequenceOfSequenceOfGeometry.hxx",
+"MAT_DataMapOfIntegerArc.hxx",
+"MAT_DataMapOfIntegerBasicElt.hxx",
+"MAT_DataMapOfIntegerBisector.hxx",
+"MAT_DataMapOfIntegerNode.hxx",
+"MAT_SequenceOfArc.hxx",
+"MAT_SequenceOfBasicElt.hxx",
+"MeshVS_Array1OfSequenceOfInteger.hxx",
+"MeshVS_DataMapOfColorMapOfInteger.hxx",
+"MeshVS_DataMapOfHArray1OfSequenceOfInteger.hxx",
+"MeshVS_DataMapOfIntegerAsciiString.hxx",
+"MeshVS_DataMapOfIntegerBoolean.hxx",
+"MeshVS_DataMapOfIntegerColor.hxx",
+"MeshVS_DataMapOfIntegerMaterial.hxx",
+"MeshVS_DataMapOfIntegerMeshEntityOwner.hxx",
+"MeshVS_DataMapOfIntegerOwner.hxx",
+"MeshVS_DataMapOfIntegerTwoColors.hxx",
+"MeshVS_DataMapOfIntegerVector.hxx",
+"MeshVS_DataMapOfTwoColorsMapOfInteger.hxx",
+"MeshVS_HArray1OfSequenceOfInteger.hxx",
+"MeshVS_MapOfTwoNodes.hxx",
+"MeshVS_SequenceOfPrsBuilder.hxx",
+"Message_HArrayOfMsg.hxx",
+"Message_ListOfAlert.hxx",
+"Message_ListOfMsg.hxx",
+"Message_SequenceOfPrinters.hxx",
+"MoniTool_DataMapOfShapeTransient.hxx",
+"MoniTool_HSequenceOfElement.hxx",
+"MoniTool_IndexedDataMapOfShapeTransient.hxx",
+"MoniTool_SequenceOfElement.hxx",
+"NLPlate_SequenceOfHGPPConstraint.hxx",
+"NLPlate_StackOfPlate.hxx",
+"PCDM_SequenceOfDocument.hxx",
+"PCDM_SequenceOfReference.hxx",
+"Plate_Array1OfPinpointConstraint.hxx",
+"Plate_HArray1OfPinpointConstraint.hxx",
+"Plate_SequenceOfLinearScalarConstraint.hxx",
+"Plate_SequenceOfLinearXYZConstraint.hxx",
+"Plate_SequenceOfPinpointConstraint.hxx",
+"Plugin_MapOfFunctions.hxx",
+"Poly_Array1OfTriangle.hxx",
+"Poly_HArray1OfTriangle.hxx",
+"Poly_ListOfTriangulation.hxx",
+"ProjLib_HSequenceOfHSequenceOfPnt.hxx",
+"ProjLib_SequenceOfHSequenceOfPnt.hxx",
+"Prs3d_NListIteratorOfListOfSequenceOfPnt.hxx",
+"Prs3d_NListOfSequenceOfPnt.hxx",
+"PrsMgr_ListOfPresentations.hxx",
+"Quantity_Array1OfColor.hxx",
+"Quantity_HArray1OfColor.hxx",
+"Resource_DataMapOfAsciiStringAsciiString.hxx",
+"Resource_DataMapOfAsciiStringExtendedString.hxx",
+"STEPCAFControl_DataMapOfLabelExternFile.hxx",
+"STEPCAFControl_DataMapOfLabelShape.hxx",
+"STEPCAFControl_DataMapOfPDExternFile.hxx",
+"STEPCAFControl_DataMapOfSDRExternFile.hxx",
+"STEPCAFControl_DataMapOfShapePD.hxx",
+"STEPCAFControl_DataMapOfShapeSDR.hxx",
+"STEPConstruct_DataMapOfAsciiStringTransient.hxx",
+"STEPConstruct_DataMapOfPointTransient.hxx",
+"STEPSelections_HSequenceOfAssemblyLink.hxx",
+"STEPSelections_SequenceOfAssemblyComponent.hxx",
+"STEPSelections_SequenceOfAssemblyLink.hxx",
+"SelectMgr_IndexedDataMapOfOwnerCriterion.hxx",
+"SelectMgr_ListOfFilter.hxx",
+"SelectMgr_SequenceOfSelection.hxx",
+"SelectMgr_VectorTypes.hxx",
+"ShapeAnalysis_DataMapOfShapeListOfReal.hxx",
+"ShapeAnalysis_HSequenceOfFreeBounds.hxx",
+"ShapeAnalysis_SequenceOfFreeBounds.hxx",
+"ShapeExtend_DataMapOfShapeListOfMsg.hxx",
+"ShapeExtend_DataMapOfTransientListOfMsg.hxx",
+"ShapeFix_DataMapOfShapeBox2d.hxx",
+"ShapeFix_SequenceOfWireSegment.hxx",
+"StdStorage_HSequenceOfRoots.hxx",
+"StdStorage_MapOfRoots.hxx",
+"StdStorage_MapOfTypes.hxx",
+"StdStorage_SequenceOfRoots.hxx",
+"StepAP203_Array1OfApprovedItem.hxx",
+"StepAP203_Array1OfCertifiedItem.hxx",
+"StepAP203_Array1OfChangeRequestItem.hxx",
+"StepAP203_Array1OfClassifiedItem.hxx",
+"StepAP203_Array1OfContractedItem.hxx",
+"StepAP203_Array1OfDateTimeItem.hxx",
+"StepAP203_Array1OfPersonOrganizationItem.hxx",
+"StepAP203_Array1OfSpecifiedItem.hxx",
+"StepAP203_Array1OfStartRequestItem.hxx",
+"StepAP203_Array1OfWorkItem.hxx",
+"StepAP203_HArray1OfApprovedItem.hxx",
+"StepAP203_HArray1OfCertifiedItem.hxx",
+"StepAP203_HArray1OfChangeRequestItem.hxx",
+"StepAP203_HArray1OfClassifiedItem.hxx",
+"StepAP203_HArray1OfContractedItem.hxx",
+"StepAP203_HArray1OfDateTimeItem.hxx",
+"StepAP203_HArray1OfPersonOrganizationItem.hxx",
+"StepAP203_HArray1OfSpecifiedItem.hxx",
+"StepAP203_HArray1OfStartRequestItem.hxx",
+"StepAP203_HArray1OfWorkItem.hxx",
+"StepAP214_Array1OfApprovalItem.hxx",
+"StepAP214_Array1OfAutoDesignDateAndPersonItem.hxx",
+"StepAP214_Array1OfAutoDesignDateAndTimeItem.hxx",
+"StepAP214_Array1OfAutoDesignDatedItem.hxx",
+"StepAP214_Array1OfAutoDesignGeneralOrgItem.hxx",
+"StepAP214_Array1OfAutoDesignGroupedItem.hxx",
+"StepAP214_Array1OfAutoDesignPresentedItemSelect.hxx",
+"StepAP214_Array1OfAutoDesignReferencingItem.hxx",
+"StepAP214_Array1OfDateAndTimeItem.hxx",
+"StepAP214_Array1OfDateItem.hxx",
+"StepAP214_Array1OfDocumentReferenceItem.hxx",
+"StepAP214_Array1OfExternalIdentificationItem.hxx",
+"StepAP214_Array1OfGroupItem.hxx",
+"StepAP214_Array1OfOrganizationItem.hxx",
+"StepAP214_Array1OfPersonAndOrganizationItem.hxx",
+"StepAP214_Array1OfPresentedItemSelect.hxx",
+"StepAP214_Array1OfSecurityClassificationItem.hxx",
+"StepAP214_HArray1OfApprovalItem.hxx",
+"StepAP214_HArray1OfAutoDesignDateAndPersonItem.hxx",
+"StepAP214_HArray1OfAutoDesignDateAndTimeItem.hxx",
+"StepAP214_HArray1OfAutoDesignDatedItem.hxx",
+"StepAP214_HArray1OfAutoDesignGeneralOrgItem.hxx",
+"StepAP214_HArray1OfAutoDesignGroupedItem.hxx",
+"StepAP214_HArray1OfAutoDesignPresentedItemSelect.hxx",
+"StepAP214_HArray1OfAutoDesignReferencingItem.hxx",
+"StepAP214_HArray1OfDateAndTimeItem.hxx",
+"StepAP214_HArray1OfDateItem.hxx",
+"StepAP214_HArray1OfDocumentReferenceItem.hxx",
+"StepAP214_HArray1OfExternalIdentificationItem.hxx",
+"StepAP214_HArray1OfGroupItem.hxx",
+"StepAP214_HArray1OfOrganizationItem.hxx",
+"StepAP214_HArray1OfPersonAndOrganizationItem.hxx",
+"StepAP214_HArray1OfPresentedItemSelect.hxx",
+"StepAP214_HArray1OfSecurityClassificationItem.hxx",
+"StepBasic_Array1OfApproval.hxx",
+"StepBasic_Array1OfDerivedUnitElement.hxx",
+"StepBasic_Array1OfDocument.hxx",
+"StepBasic_Array1OfNamedUnit.hxx",
+"StepBasic_Array1OfOrganization.hxx",
+"StepBasic_Array1OfPerson.hxx",
+"StepBasic_Array1OfProduct.hxx",
+"StepBasic_Array1OfProductContext.hxx",
+"StepBasic_Array1OfProductDefinition.hxx",
+"StepBasic_Array1OfUncertaintyMeasureWithUnit.hxx",
+"StepBasic_HArray1OfApproval.hxx",
+"StepBasic_HArray1OfDerivedUnitElement.hxx",
+"StepBasic_HArray1OfDocument.hxx",
+"StepBasic_HArray1OfNamedUnit.hxx",
+"StepBasic_HArray1OfOrganization.hxx",
+"StepBasic_HArray1OfPerson.hxx",
+"StepBasic_HArray1OfProduct.hxx",
+"StepBasic_HArray1OfProductContext.hxx",
+"StepBasic_HArray1OfProductDefinition.hxx",
+"StepBasic_HArray1OfUncertaintyMeasureWithUnit.hxx",
+"StepData_Array1OfField.hxx",
+"StepData_HArray1OfField.hxx",
+"StepDimTol_Array1OfDatumReference.hxx",
+"StepDimTol_Array1OfDatumReferenceCompartment.hxx",
+"StepDimTol_Array1OfDatumReferenceElement.hxx",
+"StepDimTol_Array1OfDatumReferenceModifier.hxx",
+"StepDimTol_Array1OfDatumSystemOrReference.hxx",
+"StepDimTol_Array1OfGeometricToleranceModifier.hxx",
+"StepDimTol_Array1OfToleranceZoneTarget.hxx",
+"StepDimTol_HArray1OfDatumReference.hxx",
+"StepDimTol_HArray1OfDatumReferenceCompartment.hxx",
+"StepDimTol_HArray1OfDatumReferenceElement.hxx",
+"StepDimTol_HArray1OfDatumReferenceModifier.hxx",
+"StepDimTol_HArray1OfDatumSystemOrReference.hxx",
+"StepDimTol_HArray1OfGeometricToleranceModifier.hxx",
+"StepDimTol_HArray1OfToleranceZoneTarget.hxx",
+"StepElement_Array1OfCurveElementEndReleasePacket.hxx",
+"StepElement_Array1OfCurveElementSectionDefinition.hxx",
+"StepElement_Array1OfHSequenceOfCurveElementPurposeMember.hxx",
+"StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember.hxx",
+"StepElement_Array1OfMeasureOrUnspecifiedValue.hxx",
+"StepElement_Array1OfSurfaceSection.hxx",
+"StepElement_Array1OfVolumeElementPurpose.hxx",
+"StepElement_Array1OfVolumeElementPurposeMember.hxx",
+"StepElement_Array2OfCurveElementPurposeMember.hxx",
+"StepElement_Array2OfSurfaceElementPurpose.hxx",
+"StepElement_Array2OfSurfaceElementPurposeMember.hxx",
+"StepElement_HArray1OfCurveElementEndReleasePacket.hxx",
+"StepElement_HArray1OfCurveElementSectionDefinition.hxx",
+"StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx",
+"StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx",
+"StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx",
+"StepElement_HArray1OfSurfaceSection.hxx",
+"StepElement_HArray1OfVolumeElementPurpose.hxx",
+"StepElement_HArray1OfVolumeElementPurposeMember.hxx",
+"StepElement_HArray2OfCurveElementPurposeMember.hxx",
+"StepElement_HArray2OfSurfaceElementPurpose.hxx",
+"StepElement_HArray2OfSurfaceElementPurposeMember.hxx",
+"StepElement_HSequenceOfCurveElementPurposeMember.hxx",
+"StepElement_HSequenceOfCurveElementSectionDefinition.hxx",
+"StepElement_HSequenceOfElementMaterial.hxx",
+"StepElement_HSequenceOfSurfaceElementPurposeMember.hxx",
+"StepElement_SequenceOfCurveElementPurposeMember.hxx",
+"StepElement_SequenceOfCurveElementSectionDefinition.hxx",
+"StepElement_SequenceOfElementMaterial.hxx",
+"StepElement_SequenceOfSurfaceElementPurposeMember.hxx",
+"StepFEA_Array1OfCurveElementEndOffset.hxx",
+"StepFEA_Array1OfCurveElementEndRelease.hxx",
+"StepFEA_Array1OfCurveElementInterval.hxx",
+"StepFEA_Array1OfDegreeOfFreedom.hxx",
+"StepFEA_Array1OfElementRepresentation.hxx",
+"StepFEA_Array1OfNodeRepresentation.hxx",
+"StepFEA_HArray1OfCurveElementEndOffset.hxx",
+"StepFEA_HArray1OfCurveElementEndRelease.hxx",
+"StepFEA_HArray1OfCurveElementInterval.hxx",
+"StepFEA_HArray1OfDegreeOfFreedom.hxx",
+"StepFEA_HArray1OfElementRepresentation.hxx",
+"StepFEA_HArray1OfNodeRepresentation.hxx",
+"StepFEA_HSequenceOfCurve3dElementProperty.hxx",
+"StepFEA_HSequenceOfElementGeometricRelationship.hxx",
+"StepFEA_HSequenceOfElementRepresentation.hxx",
+"StepFEA_HSequenceOfNodeRepresentation.hxx",
+"StepFEA_SequenceOfCurve3dElementProperty.hxx",
+"StepFEA_SequenceOfElementGeometricRelationship.hxx",
+"StepFEA_SequenceOfElementRepresentation.hxx",
+"StepFEA_SequenceOfNodeRepresentation.hxx",
+"StepGeom_Array1OfBoundaryCurve.hxx",
+"StepGeom_Array1OfCartesianPoint.hxx",
+"StepGeom_Array1OfCompositeCurveSegment.hxx",
+"StepGeom_Array1OfCurve.hxx",
+"StepGeom_Array1OfPcurveOrSurface.hxx",
+"StepGeom_Array1OfSurfaceBoundary.hxx",
+"StepGeom_Array1OfTrimmingSelect.hxx",
+"StepGeom_Array2OfCartesianPoint.hxx",
+"StepGeom_Array2OfSurfacePatch.hxx",
+"StepGeom_HArray1OfBoundaryCurve.hxx",
+"StepGeom_HArray1OfCartesianPoint.hxx",
+"StepGeom_HArray1OfCompositeCurveSegment.hxx",
+"StepGeom_HArray1OfCurve.hxx",
+"StepGeom_HArray1OfPcurveOrSurface.hxx",
+"StepGeom_HArray1OfSurfaceBoundary.hxx",
+"StepGeom_HArray1OfTrimmingSelect.hxx",
+"StepGeom_HArray2OfCartesianPoint.hxx",
+"StepGeom_HArray2OfSurfacePatch.hxx",
+"StepRepr_Array1OfMaterialPropertyRepresentation.hxx",
+"StepRepr_Array1OfPropertyDefinitionRepresentation.hxx",
+"StepRepr_Array1OfRepresentationItem.hxx",
+"StepRepr_Array1OfShapeAspect.hxx",
+"StepRepr_HArray1OfMaterialPropertyRepresentation.hxx",
+"StepRepr_HArray1OfPropertyDefinitionRepresentation.hxx",
+"StepRepr_HArray1OfRepresentationItem.hxx",
+"StepRepr_HArray1OfShapeAspect.hxx",
+"StepRepr_HSequenceOfMaterialPropertyRepresentation.hxx",
+"StepRepr_HSequenceOfRepresentationItem.hxx",
+"StepRepr_SequenceOfMaterialPropertyRepresentation.hxx",
+"StepRepr_SequenceOfRepresentationItem.hxx",
+"StepShape_Array1OfConnectedEdgeSet.hxx",
+"StepShape_Array1OfConnectedFaceSet.hxx",
+"StepShape_Array1OfEdge.hxx",
+"StepShape_Array1OfFace.hxx",
+"StepShape_Array1OfFaceBound.hxx",
+"StepShape_Array1OfGeometricSetSelect.hxx",
+"StepShape_Array1OfOrientedClosedShell.hxx",
+"StepShape_Array1OfOrientedEdge.hxx",
+"StepShape_Array1OfShapeDimensionRepresentationItem.hxx",
+"StepShape_Array1OfShell.hxx",
+"StepShape_Array1OfValueQualifier.hxx",
+"StepShape_HArray1OfConnectedEdgeSet.hxx",
+"StepShape_HArray1OfConnectedFaceSet.hxx",
+"StepShape_HArray1OfEdge.hxx",
+"StepShape_HArray1OfFace.hxx",
+"StepShape_HArray1OfFaceBound.hxx",
+"StepShape_HArray1OfGeometricSetSelect.hxx",
+"StepShape_HArray1OfOrientedClosedShell.hxx",
+"StepShape_HArray1OfOrientedEdge.hxx",
+"StepShape_HArray1OfShapeDimensionRepresentationItem.hxx",
+"StepShape_HArray1OfShell.hxx",
+"StepShape_HArray1OfValueQualifier.hxx",
+"StepToTopoDS_DataMapOfRI.hxx",
+"StepToTopoDS_DataMapOfRINames.hxx",
+"StepToTopoDS_DataMapOfTRI.hxx",
+"StepToTopoDS_PointEdgeMap.hxx",
+"StepToTopoDS_PointVertexMap.hxx",
+"StepVisual_Array1OfAnnotationPlaneElement.hxx",
+"StepVisual_Array1OfBoxCharacteristicSelect.hxx",
+"StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect.hxx",
+"StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect.hxx",
+"StepVisual_Array1OfCurveStyleFontPattern.hxx",
+"StepVisual_Array1OfDirectionCountSelect.hxx",
+"StepVisual_Array1OfDraughtingCalloutElement.hxx",
+"StepVisual_Array1OfFillStyleSelect.hxx",
+"StepVisual_Array1OfInvisibleItem.hxx",
+"StepVisual_Array1OfLayeredItem.hxx",
+"StepVisual_Array1OfPresentationStyleAssignment.hxx",
+"StepVisual_Array1OfPresentationStyleSelect.hxx",
+"StepVisual_Array1OfRenderingPropertiesSelect.hxx",
+"StepVisual_Array1OfStyleContextSelect.hxx",
+"StepVisual_Array1OfSurfaceStyleElementSelect.hxx",
+"StepVisual_Array1OfTessellatedEdgeOrVertex.hxx",
+"StepVisual_Array1OfTessellatedStructuredItem.hxx",
+"StepVisual_Array1OfTextOrCharacter.hxx",
+"StepVisual_HArray1OfAnnotationPlaneElement.hxx",
+"StepVisual_HArray1OfBoxCharacteristicSelect.hxx",
+"StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect.hxx",
+"StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect.hxx",
+"StepVisual_HArray1OfCurveStyleFontPattern.hxx",
+"StepVisual_HArray1OfDirectionCountSelect.hxx",
+"StepVisual_HArray1OfDraughtingCalloutElement.hxx",
+"StepVisual_HArray1OfFillStyleSelect.hxx",
+"StepVisual_HArray1OfInvisibleItem.hxx",
+"StepVisual_HArray1OfLayeredItem.hxx",
+"StepVisual_HArray1OfPresentationStyleAssignment.hxx",
+"StepVisual_HArray1OfPresentationStyleSelect.hxx",
+"StepVisual_HArray1OfRenderingPropertiesSelect.hxx",
+"StepVisual_HArray1OfStyleContextSelect.hxx",
+"StepVisual_HArray1OfSurfaceStyleElementSelect.hxx",
+"StepVisual_HArray1OfTessellatedEdgeOrVertex.hxx",
+"StepVisual_HArray1OfTessellatedStructuredItem.hxx",
+"StepVisual_HArray1OfTextOrCharacter.hxx",
+"Storage_ArrayOfCallBack.hxx",
+"Storage_HArrayOfCallBack.hxx",
+"Storage_HArrayOfSchema.hxx",
+"Storage_HPArray.hxx",
+"Storage_HSeqOfRoot.hxx",
+"Storage_MapOfCallBack.hxx",
+"Storage_MapOfPers.hxx",
+"Storage_PArray.hxx",
+"Storage_PType.hxx",
+"Storage_SeqOfRoot.hxx",
+"TColGeom2d_Array1OfBSplineCurve.hxx",
+"TColGeom2d_Array1OfBezierCurve.hxx",
+"TColGeom2d_Array1OfCurve.hxx",
+"TColGeom2d_HArray1OfBSplineCurve.hxx",
+"TColGeom2d_HArray1OfBezierCurve.hxx",
+"TColGeom2d_HArray1OfCurve.hxx",
+"TColGeom2d_HSequenceOfBoundedCurve.hxx",
+"TColGeom2d_HSequenceOfCurve.hxx",
+"TColGeom2d_SequenceOfBoundedCurve.hxx",
+"TColGeom2d_SequenceOfCurve.hxx",
+"TColGeom2d_SequenceOfGeometry.hxx",
+"TColGeom_Array1OfBSplineCurve.hxx",
+"TColGeom_Array1OfBezierCurve.hxx",
+"TColGeom_Array1OfCurve.hxx",
+"TColGeom_Array1OfSurface.hxx",
+"TColGeom_Array2OfBezierSurface.hxx",
+"TColGeom_Array2OfSurface.hxx",
+"TColGeom_HArray1OfBSplineCurve.hxx",
+"TColGeom_HArray1OfBezierCurve.hxx",
+"TColGeom_HArray1OfCurve.hxx",
+"TColGeom_HArray1OfSurface.hxx",
+"TColGeom_HArray2OfSurface.hxx",
+"TColGeom_HSequenceOfBoundedCurve.hxx",
+"TColGeom_HSequenceOfCurve.hxx",
+"TColGeom_SequenceOfBoundedCurve.hxx",
+"TColGeom_SequenceOfCurve.hxx",
+"TColGeom_SequenceOfSurface.hxx",
+"TColStd_Array1OfAsciiString.hxx",
+"TColStd_Array1OfBoolean.hxx",
+"TColStd_Array1OfByte.hxx",
+"TColStd_Array1OfCharacter.hxx",
+"TColStd_Array1OfExtendedString.hxx",
+"TColStd_Array1OfInteger.hxx",
+"TColStd_Array1OfListOfInteger.hxx",
+"TColStd_Array1OfReal.hxx",
+"TColStd_Array1OfTransient.hxx",
+"TColStd_Array2OfBoolean.hxx",
+"TColStd_Array2OfCharacter.hxx",
+"TColStd_Array2OfInteger.hxx",
+"TColStd_Array2OfReal.hxx",
+"TColStd_Array2OfTransient.hxx",
+"TColStd_DataMapOfAsciiStringInteger.hxx",
+"TColStd_DataMapOfIntegerInteger.hxx",
+"TColStd_DataMapOfIntegerListOfInteger.hxx",
+"TColStd_DataMapOfIntegerReal.hxx",
+"TColStd_DataMapOfIntegerTransient.hxx",
+"TColStd_DataMapOfStringInteger.hxx",
+"TColStd_DataMapOfTransientTransient.hxx",
+"TColStd_HArray1OfAsciiString.hxx",
+"TColStd_HArray1OfBoolean.hxx",
+"TColStd_HArray1OfByte.hxx",
+"TColStd_HArray1OfCharacter.hxx",
+"TColStd_HArray1OfExtendedString.hxx",
+"TColStd_HArray1OfInteger.hxx",
+"TColStd_HArray1OfListOfInteger.hxx",
+"TColStd_HArray1OfReal.hxx",
+"TColStd_HArray1OfTransient.hxx",
+"TColStd_HArray2OfBoolean.hxx",
+"TColStd_HArray2OfCharacter.hxx",
+"TColStd_HArray2OfInteger.hxx",
+"TColStd_HArray2OfReal.hxx",
+"TColStd_HArray2OfTransient.hxx",
+"TColStd_HSequenceOfAsciiString.hxx",
+"TColStd_HSequenceOfExtendedString.hxx",
+"TColStd_HSequenceOfHAsciiString.hxx",
+"TColStd_HSequenceOfHExtendedString.hxx",
+"TColStd_HSequenceOfInteger.hxx",
+"TColStd_HSequenceOfReal.hxx",
+"TColStd_HSequenceOfTransient.hxx",
+"TColStd_IndexedDataMapOfStringString.hxx",
+"TColStd_IndexedDataMapOfTransientTransient.hxx",
+"TColStd_IndexedMapOfInteger.hxx",
+"TColStd_IndexedMapOfReal.hxx",
+"TColStd_IndexedMapOfTransient.hxx",
+"TColStd_ListOfAsciiString.hxx",
+"TColStd_ListOfInteger.hxx",
+"TColStd_ListOfReal.hxx",
+"TColStd_ListOfTransient.hxx",
+"TColStd_MapOfAsciiString.hxx",
+"TColStd_MapOfInteger.hxx",
+"TColStd_MapOfReal.hxx",
+"TColStd_MapOfTransient.hxx",
+"TColStd_SequenceOfAddress.hxx",
+"TColStd_SequenceOfAsciiString.hxx",
+"TColStd_SequenceOfBoolean.hxx",
+"TColStd_SequenceOfExtendedString.hxx",
+"TColStd_SequenceOfHAsciiString.hxx",
+"TColStd_SequenceOfHExtendedString.hxx",
+"TColStd_SequenceOfInteger.hxx",
+"TColStd_SequenceOfReal.hxx",
+"TColStd_SequenceOfTransient.hxx",
+"TColgp_Array1OfCirc2d.hxx",
+"TColgp_Array1OfDir.hxx",
+"TColgp_Array1OfDir2d.hxx",
+"TColgp_Array1OfLin2d.hxx",
+"TColgp_Array1OfPnt.hxx",
+"TColgp_Array1OfPnt2d.hxx",
+"TColgp_Array1OfVec.hxx",
+"TColgp_Array1OfVec2d.hxx",
+"TColgp_Array1OfXY.hxx",
+"TColgp_Array1OfXYZ.hxx",
+"TColgp_Array2OfCirc2d.hxx",
+"TColgp_Array2OfDir.hxx",
+"TColgp_Array2OfDir2d.hxx",
+"TColgp_Array2OfLin2d.hxx",
+"TColgp_Array2OfPnt.hxx",
+"TColgp_Array2OfPnt2d.hxx",
+"TColgp_Array2OfVec.hxx",
+"TColgp_Array2OfVec2d.hxx",
+"TColgp_Array2OfXY.hxx",
+"TColgp_Array2OfXYZ.hxx",
+"TColgp_HArray1OfCirc2d.hxx",
+"TColgp_HArray1OfDir.hxx",
+"TColgp_HArray1OfDir2d.hxx",
+"TColgp_HArray1OfLin2d.hxx",
+"TColgp_HArray1OfPnt.hxx",
+"TColgp_HArray1OfPnt2d.hxx",
+"TColgp_HArray1OfVec.hxx",
+"TColgp_HArray1OfVec2d.hxx",
+"TColgp_HArray1OfXY.hxx",
+"TColgp_HArray1OfXYZ.hxx",
+"TColgp_HArray2OfCirc2d.hxx",
+"TColgp_HArray2OfDir.hxx",
+"TColgp_HArray2OfDir2d.hxx",
+"TColgp_HArray2OfLin2d.hxx",
+"TColgp_HArray2OfPnt.hxx",
+"TColgp_HArray2OfPnt2d.hxx",
+"TColgp_HArray2OfVec.hxx",
+"TColgp_HArray2OfVec2d.hxx",
+"TColgp_HArray2OfXY.hxx",
+"TColgp_HArray2OfXYZ.hxx",
+"TColgp_HSequenceOfDir.hxx",
+"TColgp_HSequenceOfDir2d.hxx",
+"TColgp_HSequenceOfPnt.hxx",
+"TColgp_HSequenceOfPnt2d.hxx",
+"TColgp_HSequenceOfVec.hxx",
+"TColgp_HSequenceOfVec2d.hxx",
+"TColgp_HSequenceOfXY.hxx",
+"TColgp_HSequenceOfXYZ.hxx",
+"TColgp_SequenceOfArray1OfPnt2d.hxx",
+"TColgp_SequenceOfAx1.hxx",
+"TColgp_SequenceOfDir.hxx",
+"TColgp_SequenceOfDir2d.hxx",
+"TColgp_SequenceOfPnt.hxx",
+"TColgp_SequenceOfPnt2d.hxx",
+"TColgp_SequenceOfVec.hxx",
+"TColgp_SequenceOfVec2d.hxx",
+"TColgp_SequenceOfXY.hxx",
+"TColgp_SequenceOfXYZ.hxx",
+"TDF_AttributeArray1.hxx",
+"TDF_AttributeDataMap.hxx",
+"TDF_AttributeDeltaList.hxx",
+"TDF_AttributeDoubleMap.hxx",
+"TDF_AttributeList.hxx",
+"TDF_AttributeMap.hxx",
+"TDF_AttributeSequence.hxx",
+"TDF_DeltaList.hxx",
+"TDF_GUIDProgIDMap.hxx",
+"TDF_HAttributeArray1.hxx",
+"TDF_IDList.hxx",
+"TDF_IDMap.hxx",
+"TDF_LabelDataMap.hxx",
+"TDF_LabelDoubleMap.hxx",
+"TDF_LabelIndexedMap.hxx",
+"TDF_LabelIntegerMap.hxx",
+"TDF_LabelList.hxx",
+"TDF_LabelMap.hxx",
+"TDF_LabelSequence.hxx",
+"TDataStd_DataMapOfStringByte.hxx",
+"TDataStd_DataMapOfStringHArray1OfInteger.hxx",
+"TDataStd_DataMapOfStringHArray1OfReal.hxx",
+"TDataStd_DataMapOfStringReal.hxx",
+"TDataStd_DataMapOfStringString.hxx",
+"TDataStd_HLabelArray1.hxx",
+"TDataStd_LabelArray1.hxx",
+"TDataStd_ListOfByte.hxx",
+"TDataStd_ListOfExtendedString.hxx",
+"TDataXtd_Array1OfTrsf.hxx",
+"TDataXtd_HArray1OfTrsf.hxx",
+"TDocStd_LabelIDMapDataMap.hxx",
+"TDocStd_SequenceOfApplicationDelta.hxx",
+"TDocStd_SequenceOfDocument.hxx",
+"TFunction_Array1OfDataMapOfGUIDDriver.hxx",
+"TFunction_DataMapOfGUIDDriver.hxx",
+"TFunction_DataMapOfLabelListOfLabel.hxx",
+"TFunction_DoubleMapOfIntegerLabel.hxx",
+"TFunction_HArray1OfDataMapOfGUIDDriver.hxx",
+"TNaming_DataMapOfShapePtrRefShape.hxx",
+"TNaming_DataMapOfShapeShapesSet.hxx",
+"TNaming_ListOfIndexedDataMapOfShapeListOfShape.hxx",
+"TNaming_ListOfMapOfShape.hxx",
+"TNaming_ListOfNamedShape.hxx",
+"TNaming_MapOfNamedShape.hxx",
+"TNaming_NCollections.hxx",
+"TObj_Container.hxx",
+"TObj_SequenceOfIterator.hxx",
+"TPrsStd_DataMapOfGUIDDriver.hxx",
+"TShort_Array1OfShortReal.hxx",
+"TShort_Array2OfShortReal.hxx",
+"TShort_HArray1OfShortReal.hxx",
+"TShort_HArray2OfShortReal.hxx",
+"TShort_HSequenceOfShortReal.hxx",
+"TShort_SequenceOfShortReal.hxx",
+"TopBas_ListOfTestInterference.hxx",
+"TopLoc_IndexedMapOfLocation.hxx",
+"TopLoc_MapOfLocation.hxx",
+"TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape.hxx",
+"TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx",
+"TopOpeBRepBuild_ListOfListOfLoop.hxx",
+"TopOpeBRepBuild_ListOfLoop.hxx",
+"TopOpeBRepBuild_ListOfPave.hxx",
+"TopOpeBRepBuild_ListOfShapeListOfShape.hxx",
+"TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference.hxx",
+"TopOpeBRepDS_DataMapOfCheckStatus.hxx",
+"TopOpeBRepDS_DataMapOfIntegerListOfInterference.hxx",
+"TopOpeBRepDS_DataMapOfInterferenceListOfInterference.hxx",
+"TopOpeBRepDS_DataMapOfInterferenceShape.hxx",
+"TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx",
+"TopOpeBRepDS_DataMapOfShapeState.hxx",
+"TopOpeBRepDS_DoubleMapOfIntegerShape.hxx",
+"TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx",
+"TopOpeBRepDS_IndexedDataMapOfShapeWithState.hxx",
+"TopOpeBRepDS_IndexedDataMapOfVertexPoint.hxx",
+"TopOpeBRepDS_ListOfInterference.hxx",
+"TopOpeBRepDS_MapOfCurve.hxx",
+"TopOpeBRepDS_MapOfIntegerShapeData.hxx",
+"TopOpeBRepDS_MapOfPoint.hxx",
+"TopOpeBRepDS_MapOfShapeData.hxx",
+"TopOpeBRepDS_MapOfSurface.hxx",
+"TopOpeBRepDS_ShapeSurface.hxx",
+"TopOpeBRepTool_DataMapOfOrientedShapeC2DF.hxx",
+"TopOpeBRepTool_DataMapOfShapeListOfC2DF.hxx",
+"TopOpeBRepTool_DataMapOfShapeface.hxx",
+"TopOpeBRepTool_IndexedDataMapOfShapeBox.hxx",
+"TopOpeBRepTool_IndexedDataMapOfShapeBox2d.hxx",
+"TopOpeBRepTool_IndexedDataMapOfShapeconnexity.hxx",
+"TopOpeBRepTool_IndexedDataMapOfSolidClassifier.hxx",
+"TopOpeBRepTool_ListOfC2DF.hxx",
+"TopOpeBRep_Array1OfLineInter.hxx",
+"TopOpeBRep_Array1OfVPointInter.hxx",
+"TopOpeBRep_DataMapOfTopolTool.hxx",
+"TopOpeBRep_HArray1OfLineInter.hxx",
+"TopOpeBRep_HArray1OfVPointInter.hxx",
+"TopOpeBRep_ListOfBipoint.hxx",
+"TopOpeBRep_SequenceOfPoint2d.hxx",
+"TopTools_Array1OfListOfShape.hxx",
+"TopTools_Array1OfShape.hxx",
+"TopTools_Array2OfShape.hxx",
+"TopTools_DataMapOfIntegerListOfShape.hxx",
+"TopTools_DataMapOfIntegerShape.hxx",
+"TopTools_DataMapOfOrientedShapeInteger.hxx",
+"TopTools_DataMapOfOrientedShapeShape.hxx",
+"TopTools_DataMapOfShapeBox.hxx",
+"TopTools_DataMapOfShapeInteger.hxx",
+"TopTools_DataMapOfShapeListOfInteger.hxx",
+"TopTools_DataMapOfShapeListOfShape.hxx",
+"TopTools_DataMapOfShapeReal.hxx",
+"TopTools_DataMapOfShapeSequenceOfShape.hxx",
+"TopTools_DataMapOfShapeShape.hxx",
+"TopTools_HArray1OfListOfShape.hxx",
+"TopTools_HArray1OfShape.hxx",
+"TopTools_HArray2OfShape.hxx",
+"TopTools_HSequenceOfShape.hxx",
+"TopTools_IndexedDataMapOfShapeAddress.hxx",
+"TopTools_IndexedDataMapOfShapeListOfShape.hxx",
+"TopTools_IndexedDataMapOfShapeReal.hxx",
+"TopTools_IndexedDataMapOfShapeShape.hxx",
+"TopTools_IndexedMapOfOrientedShape.hxx",
+"TopTools_IndexedMapOfShape.hxx",
+"TopTools_ListOfListOfShape.hxx",
+"TopTools_ListOfShape.hxx",
+"TopTools_MapOfOrientedShape.hxx",
+"TopTools_MapOfShape.hxx",
+"TopTools_SequenceOfShape.hxx",
+"TopTrans_Array2OfOrientation.hxx",
+"TransferBRep_HSequenceOfTransferResultInfo.hxx",
+"TransferBRep_SequenceOfTransferResultInfo.hxx",
+"Transfer_HSequenceOfBinder.hxx",
+"Transfer_HSequenceOfFinder.hxx",
+"Transfer_SequenceOfBinder.hxx",
+"Transfer_SequenceOfFinder.hxx",
+"Transfer_TransferMapOfProcessForFinder.hxx",
+"Transfer_TransferMapOfProcessForTransient.hxx",
+"Units_QtsSequence.hxx",
+"Units_QuantitiesSequence.hxx",
+"Units_TksSequence.hxx",
+"Units_TokensSequence.hxx",
+"Units_UnitsSequence.hxx",
+"Units_UtsSequence.hxx",
+"V3d_ListOfLight.hxx",
+"VrmlData_DataMapOfShapeAppearance.hxx",
+"VrmlData_ListOfNode.hxx",
+"VrmlData_MapOfNode.hxx",
+"XCAFDimTolObjects_DataMapOfToleranceDatum.hxx",
+"XCAFDimTolObjects_DatumModifiersSequence.hxx",
+"XCAFDimTolObjects_DimensionModifiersSequence.hxx",
+"XCAFDimTolObjects_GeomToleranceModifiersSequence.hxx",
+"XCAFDoc_DataMapOfShapeLabel.hxx",
+"XCAFPrs_DataMapOfStyleShape.hxx",
+"XCAFPrs_DataMapOfStyleTransient.hxx",
+"XCAFPrs_IndexedDataMapOfShapeStyle.hxx",
+"XmlLDrivers_SequenceOfNamespaceDef.hxx",
+"XmlMDF_MapOfDriver.hxx",
+"XmlMDF_TypeADriverMap.hxx",
+"dep",
+"gp_Vec2f.hxx",
+"gp_Vec3f.hxx",
+"math_Array1OfValueAndWeight.hxx",
+"IMeshData_Types.hxx"
+]
+
+#           "BVH_Box.hxx","BVH_tools.hxx"
+
+exceptions = ["Standard_Failure"]
+
+exclude_collection = [
+"Shared_Map_constStandard_Transient",
+"Shared_IndexedMap_SelectMgr_EntityOwner",
+"List_BRepCheck_Status",
+"HArray1_StepDimTol_GeometricToleranceModifier",
+"DataMap_TopoDS_Shape_RWMesh_NodeAttributes",
+"Map_Graphic3d_Structure",
+"Shared_Map_const Standard_Transient",
+"Vec3_size_t",
+"Vec2_unsigned  int",
+"Sequence_const gp_Pnt2d",
+"IndexedDataMap_Standard_Transient_Standard_Transient",
+"IndexedDataMap_TCollection_AsciiString_Standard_Transient",
+"List_IVtk_PointId",
+"ForwardRangeIterator_TopExp_Explorer",
+"ForwardRangeIterator_TopoDS_Iterator",
+"IndexedMap_const Graphic3d_CStructure",
+"Array1_SelectMgr_BVHThreadPool::BVHThread",
+"DynamicArray_IntPatch_BVHTraversal::TrianglePair",
+"List_Poly_CoherentTriangulation::TwoIntegers",
+"DataMap_TopoDS_Shape_TNaming_PtrRefShape",
+"IndexedMap_Graphic3d_CView",
+"IndexedDataMap_TCollection_AsciiString_Aspect_XRAction",
+"DynamicArray_BRepExtrema_ProximityDistTool::ProxPnt_Status",
+"DataMap_unsigned  int_AIS_MouseGesture",
+"DataMap_unsigned  int_AIS_SelectionScheme",
+"DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMapHasher"
+]
+
+collection_pattern = "NCollection"
+collection_include_header_pre_top = """#include <BRepExtrema_ProximityDistTool.hxx>
+#include <gp_XYZ.hxx>
+
+class OpenGl_ShaderProgram;
+"""
+
+module_mapping = "lambda x: Path(x).splitpath()[-1].split('.')[0].split('_')[0]"
+
+byref_types = ["Standard_Real","Standard_Integer","Standard_Boolean","int","double","bool","float"]
+byref_types_smart_ptr = ["opencascade::handle", "handle", "Handle"]
+
+parsing_header = '''#pragma clang diagnostic ignored "-Wmacro-redefined"
+class Adaptor2d_Curve2d;
+class Adaptor3d_Curve;
+class Adaptor3d_Surface;
+#include <Standard_Handle.hxx>
+#undef Standard_NODISCARD
+#define Standard_NODISCARD
+'''
+
+[Linux]
+    modules = ["Xw"]
+    symbols = "symbols_mangled_linux.dat"
+
+[Windows]
+    modules = ["WNT"]
+    exclude_classes = ["Handle_*"]
+    symbols = "symbols_mangled_win.dat"
+
+[FreeBSD]
+    modules = ["Xw"]
+    symbols = "symbols_mangled_freebsd.dat"
+
+[OSX]
+    modules = ["Cocoa"]
+    symbols = "symbols_mangled_mac.dat"
+    prefix = "/usr/local/miniconda/envs/cpp-py-bindgen"
+    includes = ['/usr/local/Cellar/gcc@8/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin19/8.3.0/../../../../../../include/c++/8.3.0',
+                '/usr/local/Cellar/gcc@8/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin19/8.3.0/../../../../../../include/c++/8.3.0/x86_64-apple-darwin19',
+                '/usr/local/Cellar/gcc@8/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin19/8.3.0/../../../../../../include/c++/8.3.0/backward',
+                '/usr/local/Cellar/gcc@8/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin19/8.3.0/include',
+                '/usr/local/Cellar/gcc@8/8.3.0_2/lib/gcc/8/gcc/x86_64-apple-darwin19/8.3.0/include-fixed',
+                '/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include',
+                '/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks',
+                '/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks//OpenGL.framework/Versions/A/Headers/',
+                '/usr/local/include']
+
+[Operators]
+
+    "operator*".2 = ["__mul__","__rmul__"]
+    "operator*=".2 = ["__imul__"]
+    "operator/".2 = ["__truediv__"]
+    "operator/=".2 = ["__itruediv__"]
+    "operator+".2 = ["__add__"]
+    "operator+=".2 = ["__iadd__"]
+    "operator-".1 = ["__neg__"]
+    "operator-".2 = ["__sub__"]
+    "operator-=".2 = ["__isub__"]
+    "operator^".2 = ["__pow__"]
+    "operator^=".2 = ["__ipow__"]
+    "operator()".2 = ["__call__"]
+
+[Extras]
+
+    include_pre = "OCP_specific.inc"
+
+[Attributes]
+
+    __version__ = "8.0.1.1"
+    __slim__ = "1"
+
+[Modules]
+
+    [Modules.gp]
+
+        exclude_typedefs = ["gp","gp_TrsfNLerp"]
+
+    [Modules.Standard]
+
+        exclude_functions = ["HashCode"]
+        exclude_methods = ["Standard_Dump::DumpCharacterValues","Standard_Dump::DumpRealValues",
+            "Standard_CLocaleSentry::GetCLocale","Standard_Dump::InitRealValues", "Standard_ErrorHandler::Label"]
+
+    [Modules.Resource]
+
+        exclude_classes = ["Resource_NoSuchResource",]
+
+    [Modules.NCollection]
+
+        include_header_pre_top = """#include <gp_XYZ.hxx>
+#include <gp_XY.hxx>"""
+        include_header_pre = """const size_t DefaultBlockSize = 24600;
+const size_t THE_DEFAULT_BLOCK_SIZE = DefaultBlockSize;"""
+        exclude_classes = ["NCollection","NCollection_ListNode"]
+        exclude_class_template_methods = [".*::begin", ".*::end", ".*::cbegin", ".*::cend"]
+
+        include_body_template_post="""
+template <typename T>
+void preregister_template_NCollection_Vector(py::object &m, const char *name){
+    preregister_template_NCollection_DynamicArray<T>(m, name);
+};
+
+template <typename T>
+void register_template_NCollection_Vector(py::object &m, const char *name){
+    register_template_NCollection_DynamicArray<T>(m, name);
+};
+        """
+
+        [Modules.NCollection.Templates.NCollection_Array1]
+
+        exclude_constructors = [3]
+
+        [Modules.NCollection.Templates.NCollection_DataMap]
+
+        exclude_methods = ["Bound", "Seek", "ChangeSeek", "Contained"]
+
+        [Modules.NCollection.Templates.NCollection_IndexedDataMap]
+
+        exclude_methods = ["Seek", "ChangeSeek", "Contained"]
+
+        [Modules.NCollection.Templates.NCollection_Map]
+
+        exclude_methods = ["Contained"]
+
+        [Modules.NCollection.Templates.NCollection_IndexedMap]
+
+        exclude_methods = ["Contained"]
+
+        [Modules.NCollection.Templates.NCollection_FlatDataMap]
+
+        exclude_methods = ["Contained"]
+
+        [Modules.NCollection.Templates.NCollection_FlatMap]
+
+        exclude_methods = ["Contained"]
+
+        [Modules.NCollection.Templates.NCollection_OrderedDataMap]
+
+        exclude_methods = ["Contained"]
+
+        [Modules.NCollection.Templates.NCollection_OrderedMap]
+
+        exclude_methods = ["Contained"]
+
+        [Modules.NCollection.parsing_headers]
+
+            "NCollection_CellFilter.hxx" = """#include <gp_XYZ.hxx>
+#include <gp_XY.hxx>"""
+
+    [Modules.OSD]
+
+        exclude_functions = ["OSD","OSD_OpenStream"]
+        exclude_classes = ["OSD","OSD_FileSystem","OSD_CachedFileSystem","OSD_FileSystemSelector","OSD_LocalFileSystem"]
+        exclude_methods = ["OSD_SharedLibrary::DlSymb"]
+
+        include_body_pre = 'py::class_<OSD_FileSystem, opencascade::handle<OSD_FileSystem>>(m, "OSD_FileSystem");'
+
+    [Modules.Storage]
+
+        exclude_classes = ["Storage_StreamExtCharParityError","Storage_StreamTypeMismatchError",
+            "Storage_StreamUnknownTypeError","Storage_Bucket","Storage_BucketOfPersistent"]
+        exclude_typedefs = ["Storage","Storage_MapOfCallBack","Storage_MapOfPers"]
+
+    [Modules.TCollection]
+
+        exclude_methods = ["TCollection_ExtendedString::ToUTF8CString",
+            "TCollection_AsciiString::operator+",
+            "TCollection_AsciiString::operator=",
+            "TCollection_AsciiString::operator==",
+            "TCollection_AsciiString::operator!=",
+            "TCollection_AsciiString::operator<",
+            "TCollection_AsciiString::operator>",
+            "TCollection_AsciiString::operator+=",
+            "TCollection_AsciiString::operator+", 
+            "TCollection_ExtendedString::operator\\+=",
+            "TCollection_ExtendedString::AssignCat",
+            ] 
+        include_body_post = """py::implicitly_convertible<std::string, TCollection_HAsciiString>();
+py::implicitly_convertible<std::string, TCollection_AsciiString>();"""
+
+        [Modules.TCollection.Classes.TCollection_ExtendedString]
+
+            exclude_constructors = ["string_view"]
+
+        [[Modules.TCollection.Classes.TCollection_HAsciiString.additional_constructors]]
+
+            body = "[](const std::string &s){ return TCollection_HAsciiString(s.c_str()); }"
+            help = "std::strings based constructor"
+            arguments  = ["aString"]
+
+        [[Modules.TCollection.Classes.TCollection_AsciiString.additional_constructors]]
+
+            body = "[](const std::string &s){ return TCollection_AsciiString(s.c_str()); }"
+            help = "std::strings based constructor"
+            arguments  = ["aString"]
+
+    [Modules.TColStd]
+
+        exclude_typedefs = ["TColStd_DataMapOfIntegerTransient","TColStd","TColStd_DataMapOfTransientTransient","TColStd_IndexedDataMapOfTransientTransient"]
+
+        include_header_pre = """
+        #include  "NCollection_tmpl.hxx"
+        """
+
+        custom_deps = ["NCollection","TCollection"]
+
+    [Modules.Plugin]
+
+        exclude_typedefs = ["Plugin","Plugin_MapOfFunctions"]
+
+    [Modules.Units]
+
+        exclude_methods = ["UnitsMethods::RadianToDegree","UnitsMethods::DegreeToRadian","UnitsMethods::MirrorPCurve"]
+
+    [Modules.Poly]
+
+        include_header_pre = "#include <OSD_FileSystem.hxx>"
+        exclude_classes = ["Poly_MakeLoops","Poly",]
+        exclude_methods = ["Poly_CoherentTriangulation::FindTriangle","Poly_CoherentTriangulation::RemoveDegenerated"]
+
+    [Modules.Expr]
+
+        exclude_classes = ["ExprIntrp",]
+
+    [Modules.BSplCLib]
+
+        exclude_methods = ["BSplCLib::DN",]
+
+
+    [Modules.TopoDS]
+
+        include_header_pre = "#include <cstdint>"
+
+        [Modules.TopoDS.Classes.TopoDS_Shape.additional_methods.__bool__]
+
+            body = "[]( const TopoDS_Shape & self ){ return !self.IsNull();}"
+            help = "Check if shape is not Null"
+            arguments  = []
+
+        [Modules.TopoDS.Classes.TopoDS_Shape.additional_methods._address]
+
+            body = "[]( const TopoDS_Shape & self ){ return reinterpret_cast<uintptr_t>(&self);}"
+            help = "Get the instance address"
+            arguments  = []
+
+        [Modules.TopoDS.Classes.TopoDS_Shape.additional_static_methods._from_address]
+
+            body = "[]( const uintptr_t addr ){ return reinterpret_cast<TopoDS_Shape*>(addr);}"
+            help = "Cast an address to a shape"
+            arguments  = ["address"]
+
+        [Modules.TopoDS.Classes.TopoDS_Shape.additional_methods.__hash__]
+
+            body = "[]( const TopoDS_Shape & self ){ return std::hash<TopoDS_Shape>{}(self);}"
+            help = "Get the instance hash"
+            arguments  = []
+
+    [Modules.IntPolyh]
+
+        exclude_typedefs = ["IntPolyh_ArrayOfEdges","IntPolyh_ArrayOfTriangles","IntPolyh_ArrayOfPointNormal","IntPolyh_ArrayOfSectionLines","IntPolyh","IntPolyh_ArrayOfTangentZones","IntPolyh_ArrayOfPoints"]
+
+    [Modules.BRepBuilderAPI]
+
+        exclude_typedefs = ["BRepBuilderAPI_CellFilter","BRepBuilderAPI_BndBoxTree"]
+        exclude_methods = ["BRepBuilderAPI_FastSewing::GetStatuses"]
+
+        [Modules.BRepBuilderAPI.parsing_headers]
+
+        "BRepBuilderAPI_CellFilter.hxx" = "#include <gp_XY.hxx>"
+        "BRepBuilderAPI_VertexInspector.hxx" = "#include <gp_XY.hxx>"
+
+        [Modules.BRepBuilderAPI.Classes.BRepBuilderAPI_Command.additional_methods.__bool__]
+
+            body = "[]( const BRepBuilderAPI_Command & self){ return self.IsDone();}"
+            help = "Check if command is done"
+            arguments  = []
+
+
+    [Modules.MAT2d]
+
+        exclude_typedefs = ["MAT2d_DataMapOfIntegerConnexion"]
+
+    [Modules.BRepExtrema]
+
+        exclude_typedefs = ["BRepExtrema_MapOfIntegerPackedMapOfInteger", "BRepExtrema_CellFilter"]
+
+     [Modules.MAT]
+
+        exclude_typedefs = ["MAT_DataMapOfIntegerBisector","MAT_DataMapOfIntegerArc","MAT","MAT_DataMapOfIntegerNode","MAT_DataMapOfIntegerBasicElt"]
+
+    [Modules.BRepCheck]
+
+        exclude_typedefs = ["BRepCheck_DataMapOfShapeResult", "BRepCheck_IndexedDataMapOfShapeResult","BRepCheck_DataMapOfShapeListOfStatus"]
+
+    [Modules.BRepClass3d]
+
+        exclude_typedefs = ["BRepClass3d_BndBoxTree"]
+        exclude_classes = ["BRepClass3d_BndBoxTreeSelectorPoint",
+                           "BRepClass3d_BndBoxTreeSelectorLine"]
+
+
+    [Modules.BRepAlgo]
+
+        exclude_typedefs = ["BRepAlgo_DataMapOfShapeInterference"]
+
+    [Modules.HLRBRep]
+
+        exclude_classes = ["HLRBRep_CLPropsATool","HLRBRep_TheCSFunctionOfInterCSurf"]
+        exclude_methods = ["HLRBRep_TheCSFunctionOfInterCSurf::AuxillarySurface"] # return as const pointer (i.e. ... * const)
+
+        [Modules.HLRBRep.parsing_headers]
+
+            "HLRBRep_CLPropsATool.hxx" = "#include <HLRBRep_Curve.hxx>"
+
+    [Modules.TopOpeBRepDS]
+
+        exclude_functions = ["FDSSDM_s1s2makesordor","FUN_scanloi"]
+        exclude_typedefs = ["TopOpeBRepDS_ShapeSurface"]
+
+    [Modules.BRepAlgoAPI]
+
+        include_header_pre = "#include <BOPAlgo_Builder.hxx>"
+        exclude_methods = ["BRepAlgoAPI_BuilderAlgo::Builder",] #this will be fixed by the include
+        exclude_typedefs = ["TopOpeBRepDS_ShapeSurface"]
+
+        [Modules.BRepAlgoAPI.Classes.BRepAlgoAPI_Algo.additional_methods.RunParallel]
+
+            body = "[]( BRepAlgoAPI_Algo & self){ return self.RunParallel(); }"
+            help = "Returns the flag of parallel processing."
+            arguments  = []
+
+        [Modules.BRepAlgoAPI.Classes.BRepAlgoAPI_Algo.additional_methods.SetRunParallel]
+
+            body = "[]( BRepAlgoAPI_Algo & self , const Standard_Boolean theFlag){ self.SetRunParallel(theFlag); }"
+            help = "Set the flag of parallel processing."
+            arguments  = ["thFlag"]
+
+        [Modules.BRepAlgoAPI.Classes.BRepAlgoAPI_Algo.additional_methods.FuzzyValue]
+
+            body = "[]( BRepAlgoAPI_Algo & self){ return self.FuzzyValue(); }"
+            help = "Returns the additional tolerance."
+            arguments  = []
+
+        [Modules.BRepAlgoAPI.Classes.BRepAlgoAPI_Algo.additional_methods.SetFuzzyValue]
+
+            body = "[]( BRepAlgoAPI_Algo & self , const Standard_Real theFuzz){ self.SetFuzzyValue(theFuzz); }"
+            help = "Sets the additional tolerance."
+            arguments  = ["theFuzz"]
+
+        [Modules.BRepAlgoAPI.Classes.BRepAlgoAPI_Algo.additional_methods.SetUseOBB]
+
+            body = "[]( BRepAlgoAPI_Algo & self , const Standard_Boolean theFlag){ self.SetUseOBB(theFlag); }"
+            help = "Set the flag of parallel processing."
+            arguments  = ["thFlag"]
+
+    [Modules.TopOpeBRep]
+
+        exclude_methods = ["TopOpeBRep_DSFiller::PShapeClassifier","TopOpeBRep_FaceEdgeFiller::PShapeClassifier","TopOpeBRep_FacesFiller::PShapeClassifier"]
+        exclude_typedefs = ["TopOpeBRep_DataMapOfTopolTool"]
+
+
+    [Modules.BRepFill]
+
+        exclude_typedefs = ["BRepFill_DataMapOfShapeHArray2OfShape"]
+
+        [Modules.BRepFill.parsing_headers]
+
+            "BRepFill_TrimShellCorner.hxx" = """#include <TopoDS_Vertex.hxx>
+#include <gp_Pln.hxx>"""
+            "BRepFill_Sweep.hxx" = """#include <NCollection_HArray1.hxx>""" 
+
+    [Modules.ChFi3d]
+    #error: invalid use of incomplete type ‘class Geom_BSplineCurve’
+        exclude_functions = ["ChFi3d_ApproxByC2","ChFi3d_SearchPivot","ChFi3d_EnlargeFace",
+            "ChFi3d_InPeriod","ChFi3d_Boite","ChFi3d_SetPointTolerance"]
+
+
+    [Modules.BOPDS]
+
+        exclude_typedefs = ["BOPDS_DataMapOfPaveBlockCommonBlock"]
+
+        [Modules.BOPDS.parsing_headers]
+
+            "BOPDS_DataMapOfPaveBlockListOfInteger.hxx" = "#include <BOPDS_PaveBlock.hxx>"
+
+    [Modules.BRepMesh]
+
+        include_header_pre = "#include <IMeshData_Wire.hxx>"
+        exclude_classes = ["BRepMesh_Triangle","BRepMesh_Delaun","BRepMesh_DefaultRangeSplitter","BRepMesh_Context"] #constructor with int&[3]
+        exclude_methods = ["BRepMesh_GeomTool::IntLinLin",
+        "BRepMesh_DataStructureOfDelaun::ElementNodes","BRepMesh_MeshTool::AddTriangle",
+        "BRepMesh_ConeRangeSplitter::GetSplitSteps",
+        "BRepMesh_Delaun::FreeEdges","BRepMesh_Delaun::ProcessConstraints",
+        "BRepMesh_DefaultRangeSplitter::computeTolerance","BRepMesh_DefaultRangeSplitter::computeDelta",
+        "BRepMesh_Delaun::Frontier","BRepMesh_GeomTool::CellsCount", "BRepMesh_EdgeDiscret::operator()",
+        "BRepMesh_FaceChecker::operator()", "BRepMesh_ModelHealer::operator()"]
+        
+        [Modules.BRepMesh.parsing_headers]
+        
+        "BRepMesh_Triangle.hxx" = "#include <algorithm>"
+
+    [Modules.TopOpeBRepTool]
+
+        exclude_typedefs = ["TopOpeBRepTool_IndexedDataMapOfSolidClassifier"]
+
+        [Modules.TopOpeBRepTool.parsing_headers]
+
+            "TopOpeBRepTool_TOPOLOGY.hxx" = """
+            class TopoDS_Face;
+            class BRepAdaptor_Curve;
+            class TopoDS_Edge;
+            class TopoDS_Vertex;
+            class TopTools_ListOfShape;
+            class Bnd_Box2d;
+            """
+
+    [Modules.BOPTools]
+
+        exclude_typedefs = ["BOPTools_BoxBndTree","BOPTools_PairSelector","BOPTools_Box2dTree","BOPTools_BoxPairSelector","BOPTools_Box2dPairSelector"]
+
+        [Modules.BOPTools.parsing_headers]
+
+            "BOPTools_SetMapHasher.hxx" = "#include <BOPTools_Set.hxx>"
+
+    [Modules.Aspect]
+
+        include_header_pre = """struct __GLXFBConfigRec {};
+struct Aspect_XVisualInfo {};
+#include <WNT_HIDSpaceMouse.hxx>
+"""
+        exclude_methods = ["Aspect_NeutralWindow::NativeFBConfig","Aspect_Window::NativeFBConfig","Aspect_NeutralWindow::SetNativeHandles","Aspect_DisplayConnection::GetDisplay","Aspect_DisplayConnection::Init"]
+        exclude_typedefs = ["Aspect_XRActionSetMap","Aspect_XRActionMap"]
+
+        [Modules.Aspect.Classes.Aspect_DisplayConnection]
+
+            exclude_constructors = [1]
+
+    [Modules.SelectMgr]
+
+        exclude_typedefs = ["SelectMgr_IndexedMapOfOwner","SelectMgr_MapOfObjectSensitives","SelectMgr_FrustumCache","SelectMgr_IndexedMapOfHSensitive"]
+
+    [Modules.OpenGl]
+
+        include_header_pre = """#include <Message_Messenger.hxx>
+#include <Image_SupportedFormats.hxx>
+#include <Image_CompressedPixMap.hxx>
+#include <Graphic3d_StructureManager.hxx>
+struct NSOpenGLContext {};"""
+        include_body_pre = 'py::class_<NSOpenGLContext>(m, "NSOpenGLContext");'
+        exclude_methods = ["OpenGl_GlCore11::glGetPointerv","OpenGl_RaytraceGeometry::Clear",
+                           "OpenGl_View::ChangeGraduatedTrihedron","OpenGl_View::LayerList",
+                           "OpenGl_DepthPeeling::DetachDepthTexture", "OpenGl_DepthPeeling::DepthPeelFbosOit",
+                           "OpenGl_DepthPeeling::FrontBackColorFbosOit"]
+        exclude_typedefs = ["OpenGl_SequenceOfLayers","OpenGl_SetterList","OpenGl_MapOfHatchStylesAndIds","OpenGl_MapOfZLayerSettings","OpenGl_IndexedMapOfStructure","OpenGl_MapOfShaderPrograms","OpenGl_IndexedMapOfStructure","OpenGl_LayerSeqIds"]
+        exclude_classes = ["OpenGl_GraduatedTrihedron","OpenGl_LayerList","OpenGl_VariableSetterSelector","OpenGl_RaytraceGeometry", "OpenGl_SetterInterface"]
+
+        [Modules.OpenGl.parsing_headers]
+
+            "OpenGl_LayerList.hxx" = "#include <OpenGl_FrameBuffer.hxx>"
+            "OpenGl_ShaderObject.hxx" = "#include <NCollection_Sequence.hxx>"
+            "OpenGl_BufferCompatT.hxx" = "#include <Graphic3d_Buffer.hxx>"
+            "OpenGl_VertexBufferCompat.hxx" = "#include <Graphic3d_Buffer.hxx>"
+            "OpenGl_SetOfShaderPrograms.hxx" = "#include <TCollection_AsciiString.hxx>"
+
+    [Modules.StdSelect]
+
+        include_header_pre = "#include <V3d_Viewer.hxx>"
+        exclude_typedefs = ["StdSelect_IndexedDataMapOfOwnerPrs"]
+
+    [Modules.Xw]
+
+        include_header_pre = "struct __GLXFBConfigRec {}; union _XEvent {long pad[24];};"
+        include_body_pre = 'py::class_<__GLXFBConfigRec>(m, "__GLXFBConfigRec");'
+
+    [Modules.MeshVS]
+
+        exclude_typedefs = ["MeshVS_NodePair","MeshVS_DataMapOfIntegerOwner","MeshVS_DataMapOfHArray1OfSequenceOfInteger","MeshVS_DataMapOfIntegerMeshEntityOwner"]
+
+    [Modules.AIS]
+
+        # exclude_methods = ["AIS_InteractiveContext::EntityOwners"]
+        include_header_pre = """#include <Media_PlayerContext.hxx>
+#include <WNT_HIDSpaceMouse.hxx>
+auto OptionsForAttach = [](){return AIS_Manipulator::OptionsForAttach();};"""
+        include_body_pre = "py::class_<AIS_Manipulator::OptionsForAttach>(m,\"AIS_Manipulator_OptionsForAttach\");"
+        exclude_typedefs = ["AIS_DataMapOfShapeDrawer","AIS_DataMapOfIOStatus","AIS_DataMapOfILC","AIS_IndexedDataMapOfOwnerPrs"]
+
+    [Modules.Font]
+
+        exclude_classes = ["Font_BRepFont"]
+        exclude_methods = ["Font_FTFont::renderGlyphOutline"]
+        include_header_pre = "struct FT_LibraryRec_ {};"
+
+        [Modules.Font.Classes.Font_BRepTextBuilder.additional_methods.Perform]
+
+            body = "[]( Font_BRepTextBuilder & self , const char* path, double size, Font_FontAspect aspect, const char* text){ auto font = Font_BRepFont(path,aspect,size); return self.Perform(font,text);}"
+            help = "Render text as BRep shape."
+            arguments  = ["Font path","Font size","Font style","Text"]
+
+    [Modules.Select3D]
+
+        exclude_typedefs = ["Select3D_IndexedMapOfEntity","Graphic3d_Vec3d","Select3D_BndBox3d"]  #couldn't deduce template parameter ‘Hasher’
+
+        [Modules.Select3D.Classes.Select3D_SensitiveCircle]
+
+            exclude_constructors = [0,1] #missing vftable
+
+
+    [Modules.Graphic3d]
+
+        include_header_pre = """#include <Media_PlayerContext.hxx>
+struct NSOpenGLContext {};"""
+        exclude_typedefs = ["Graphic3d_IndexedMapOfView","Graphic3d_IndexedMapOfAddress","Graphic3d_MapOfStructure","Graphic3d_NMapOfTransient","Graphic3d_MapOfObject","Graphic3d_Vec4u","Graphic3d_Vec2u","Graphic3d_Vec3u","Graphic3d_Vec3d","Graphic3d_MapOfAspectsToAspects",
+            "Graphic3d_BndBox4d","Graphic3d_BndBox3d","Graphic3d_BndBox4f", "Graphic3d_IndexedMapOfStructure", "Graphic3d_ArrayOfIndexedMapOfStructure"]
+        exclude_methods = ["Graphic3d_BvhCStructureSet::Size","Graphic3d_BvhCStructureSet::Box",
+            "Graphic3d_BvhCStructureSet::Center","Graphic3d_BvhCStructureSet::Swap",
+            "Graphic3d_BvhCStructureSetTrsfPers::Size","Graphic3d_BvhCStructureSetTrsfPers::Box",
+            "Graphic3d_BvhCStructureSetTrsfPers::Center","Graphic3d_BvhCStructureSetTrsfPers::Swap",
+            "Graphic3d_Layer::CullableTrsfPersStructuresBVH","Graphic3d_Layer::CullableStructuresBVH"]
+        exclude_classes = ["Graphic3d_BvhCStructureSet","Graphic3d_BvhCStructureSetTrsfPers"]
+
+        [Modules.Graphic3d.parsing_headers]
+
+             "Graphic3d_WorldViewProjState.hxx" = """#include <Standard_OStream.hxx>
+#include <Standard_Dump.hxx>"""
+
+    [Modules.AdvApprox]
+
+        exclude_classes = ["AdvApprox_EvaluatorFunction"]
+        exclude_methods = ['AdvApprox_EvaluatorFunction::Evaluate']
+
+    [Modules.BVH]
+
+        exclude_typedefs = ["BVH_PrimitiveSet3d"]
+        exclude_class_templates = ["BVH_BaseBox"]
+        exclude_class_template_methods = ["BVH_Tools::PointBoxProjection"]
+
+        [Modules.BVH.parsing_headers]
+
+            "BVH_Ray.hxx" = "#include <BVH_Types.hxx>"
+
+    [Modules.TDocStd]
+
+        include_header_pre = """#include <PCDM_RetrievalDriver.hxx>
+#include <PCDM_StorageDriver.hxx>
+#include <PCDM_ReaderFilter.hxx>"""
+
+    [Modules.XmlMDF]
+
+        exclude_typedefs = ["XmlMDF_MapOfDriver","XmlMDF_TypeADriverMap"]
+
+    [Modules.StdStorage]
+
+        exclude_typedefs = ["StdStorage_MapOfRoots"]
+        exclude_classes = ["StdStorage_Bucket","StdStorage_BucketOfPersistent"]
+        exclude_methods = ["StdStorage_TypeData::Instantiator"]
+
+    [Modules.BinMDF]
+
+        exclude_typedefs = ["BinMDF_TypeADriverMap","BinMDF_TypeIdMap"]
+
+    [Modules.CDM]
+
+        exclude_typedefs = ["CDM_PresentationDirectory", "CDM_MetaDataLookUpTable"]
+
+        [Modules.CDM.parsing_headers]
+
+            "CDM_MetaDataLookUpTable.hxx" = "#include <CDM_MetaData.hxx>"
+            "CDM_DataMapIteratorOfMetaDataLookUpTable.hxx" = "#include <CDM_MetaData.hxx>"
+
+    [Modules.TDataStd]
+
+        exclude_typedefs = ["TDataStd_DataMapOfStringHArray1OfReal","TDataStd_DataMapOfStringHArray1OfInteger"]
+
+    [Modules.StdLDrivers]
+
+        include_header_pre = """#include <CDM_Document.hxx>
+#include <PCDM_ReaderFilter.hxx>"""
+
+    [Modules.TFunction]
+
+        exclude_typedefs = ["TFunction_DataMapOfGUIDDriver"]
+
+    [Modules.TObj]
+
+        include_header_pre = """#include <TDF_RelocationTable.hxx>
+#include <TDF_DeltaOnModification.hxx>"""
+        exclude_typedefs = ["TObj_DataMapOfObjectHSequenceOcafObjects"]
+
+    [Modules.StdObjMgt]
+
+        exclude_typedefs = ["StdObjMgt_TransientPersistentMap"]
+
+    [Modules.TNaming]
+
+        exclude_typedefs = ["TNaming_DataMapOfShapePtrRefShape"]
+        exclude_methods = ["TNaming_RefShape::FirstUse"]
+
+        [Modules.TNaming.parsing_headers]
+
+            "TNaming_NCollections.hxx" = "#include <TopoDS_Shape.hxx>"
+
+    [Modules.TDF]
+
+        exclude_typedefs = ["TDF_AttributeDataMap","TDF_AttributeDoubleMap"]
+        exclude_classes = ["TDF_LabelNode"]
+        exclude_methods = ["TDF_DerivedAttribute::Register", "TDF_Label::FindAttribute"]
+
+        [Modules.TDF.parsing_headers]
+
+            "TDF_LabelIndexedMap.hxx" = "#include <TDF_Label.hxx>"
+
+        [Modules.TDF.Classes.TDF_Label.additional_methods.FindAttribute]
+
+            body = "[]( TDF_Label & self , const Standard_GUID& anID, TDF_Attribute& anAttribute){ Handle(TDF_Attribute) dummy_attr; auto rv = self.FindAttribute(anID, dummy_attr); anAttribute.Restore(dummy_attr); return rv;}"
+            help = "Finds an attributes according to an ID."
+            arguments  = ["GUID","Attribute"]
+
+        [Modules.TDF.Classes.TDF_Label.additional_methods.__bool__]
+
+            body = "[]( const TDF_Label & self){ return !self.IsNull();}"
+            help = "Check if label is not Null"
+            arguments  = []
+
+
+    [Modules.XmlTObjDrivers]
+
+        include_header_pre = """#include <TDF_Attribute.hxx>
+#include <XmlObjMgt_Persistent.hxx>"""
+
+    [Modules.TPrsStd]
+
+        exclude_typedefs = ["TPrsStd_DataMapOfGUIDDriver"]
+
+    [Modules.STEPConstruct]
+
+        exclude_typedefs = ["STEPConstruct_DataMapOfAsciiStringTransient","STEPConstruct_DataMapOfPointTransient"]
+
+        [Modules.STEPConstruct.parsing_headers]
+
+            "STEPConstruct_PointHasher.hxx" = "#include <gp_Pnt.hxx>"
+            "STEPConstruct_Styles.hxx" = "#include <StepData_StepModel.hxx>"
+            "STEPConstruct_ValidationProps.hxx" = "#include <StepData_Factors.hxx>"
+
+    [Modules.RWStl]
+
+        include_header_pre = """
+        #include <DE_ConfigurationContext.hxx>
+        #include <NCollection_Buffer.hxx>
+        #include <TDocStd_Document.hxx>
+        #include <XSControl_WorkSession.hxx>
+        #include <TopoDS_Shape.hxx>"""
+
+        exclude_methods = ["RWStl_Reader::ReadAscii"]
+
+    [Modules.StepShape]
+
+        include_header_pre = """#include <StepRepr_RepresentationContext.hxx>"""
+
+    [Modules.Transfer]
+
+        include_header_pre_top = """
+        #include <XSAlgo_ShapeProcessor.hxx>
+        #include <DE_ShapeFixParameters.hxx>
+        """
+        exclude_typedefs = ["Transfer_TransferMapOfProcessForFinder","Transfer_TransferMapOfProcessForTransient"]
+
+    [Modules.ShapeFix]
+
+        [Modules.ShapeFix.parsing_headers]
+
+            "ShapeFix_Solid.hxx" = "#include <Message_ProgressRange.hxx>"
+
+    [Modules.BRepBlend]
+
+        exclude_methods = ["BRepBlend_AppSurface::TolReached"]
+
+    [Modules.StdPersistent]
+
+        include_header_pre = """using ItemLocation = StdPersistent_TopLoc::ItemLocation;
+using Datum3D = StdPersistent_TopLoc::Datum3D;"""
+
+    [Modules.AppCont]
+
+        exclude_methods = ["AppCont_Function::PeriodInformation"]
+        exclude_functions = ["InvMMatrix","MMatrix","IBPMatrix","IBTMatrix","VBernstein"]
+
+    [Modules.ShapePersistent]
+
+        include_header_pre = """using Curve3D = ShapePersistent_BRep::Curve3D;
+using CurveOn2Surfaces = ShapePersistent_BRep::CurveOn2Surfaces;
+using CurveOnClosedSurface = ShapePersistent_BRep::CurveOnClosedSurface;
+using CurveOnSurface = ShapePersistent_BRep::CurveOnSurface;
+using CurveRepresentation = ShapePersistent_BRep::CurveRepresentation;
+using GCurve = ShapePersistent_BRep::GCurve;
+using PointOnCurve = ShapePersistent_BRep::PointOnCurve;
+using PointOnCurveOnSurface = ShapePersistent_BRep::PointOnCurveOnSurface;
+using PointOnSurface = ShapePersistent_BRep::PointOnSurface;
+using PointRepresentation = ShapePersistent_BRep::PointRepresentation;
+using PointsOnSurface = ShapePersistent_BRep::PointsOnSurface;
+using Polygon3D = ShapePersistent_BRep::Polygon3D;
+using PolygonOnClosedSurface = ShapePersistent_BRep::PolygonOnClosedSurface;
+using PolygonOnClosedTriangulation = ShapePersistent_BRep::PolygonOnClosedTriangulation;
+using PolygonOnSurface = ShapePersistent_BRep::PolygonOnSurface;
+using PolygonOnTriangulation = ShapePersistent_BRep::PolygonOnTriangulation;
+#include <Geom2d_AxisPlacement.hxx>
+#include <Geom2d_BSplineCurve.hxx>
+#include <Geom2d_BezierCurve.hxx>
+#include <Geom2d_BoundedCurve.hxx>
+#include <Geom2d_CartesianPoint.hxx>
+#include <Geom2d_Circle.hxx>
+#include <Geom2d_Conic.hxx>
+#include <Geom2d_Curve.hxx>
+#include <Geom2d_Direction.hxx>
+#include <Geom2d_Ellipse.hxx>
+#include <Geom2d_Geometry.hxx>
+#include <Geom2d_Hyperbola.hxx>
+#include <Geom2d_Line.hxx>
+#include <Geom2d_OffsetCurve.hxx>
+#include <Geom2d_Parabola.hxx>
+#include <Geom2d_Point.hxx>
+#include <Geom2d_Transformation.hxx>
+#include <Geom2d_TrimmedCurve.hxx>
+#include <Geom2d_UndefinedDerivative.hxx>
+#include <Geom2d_UndefinedValue.hxx>
+#include <Geom2d_Vector.hxx>
+#include <Geom2d_VectorWithMagnitude.hxx>
+"""
+
+    [Modules.IntAna]
+
+        exclude_methods = ["IntAna_Quadric::SpecialPoints"]
+
+        [Modules.IntAna.parsing_headers]
+
+            "IntAna_Quadric.hxx" = """#include <gp_Pln.hxx>
+#include <gp_Sphere.hxx>
+#include <gp_Cylinder.hxx>
+#include <gp_Cone.hxx>
+#include <gp_Ax3.hxx>
+#include <gp_Pnt.hxx>"""
+
+    [Modules.CDF]
+
+        include_header_pre = """#include <Resource_Manager.hxx>
+#include <PCDM_ReaderFilter.hxx>
+#include <Message_ProgressRange.hxx>"""
+
+        [Modules.CDF.parsing_headers]
+
+            "CDF_StoreList.hxx" = "#include <Message_ProgressRange.hxx>"
+
+    [Modules.Image]
+
+        include_header_pre = """#include <ostream>
+using std::basic_ostream;
+using std::char_traits;"""
+
+        exclude_methods = ["Image_AlienPixMap::Load", "Image_AlienPixMap::GetPalette"]
+
+    [Modules.Prs3d]
+
+        include_header_pre = """#include <Graphic3d_StructureManager.hxx>
+#include <Graphic3d_Text.hxx>"""
+
+        [Modules.Prs3d.parsing_headers]
+
+            "Prs3d_Point.hxx" = "#include <Prs3d_Presentation.hxx>"
+
+    [Modules.WNT]
+
+        include_header_pre_top ="""#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+"""
+
+        exclude_methods = ["WNT_Window::ProcessMessage"]
+
+        include_header_pre = """#include <Aspect_DisplayConnection.hxx>
+struct __GLXFBConfigRec {};"""
+
+    [Modules.Cocoa]
+
+        include_header_pre = """#include <Aspect_DisplayConnection.hxx>
+struct NSView {};
+struct __GLXFBConfigRec {};"""
+
+        [[Modules.Cocoa.Classes.Cocoa_Window.additional_constructors]]
+
+            body = "[](void* ptr){ return Cocoa_Window(reinterpret_cast<NSView*>(ptr)); }"
+            help = "Creates a wrapper over existing NSView handle."
+            arguments  = ["NSView*"]
+
+    [Modules.StepData]
+
+        exclude_classes = ["StepData_EnumTool"]
+
+        [Modules.StepData.Classes.StepData_SelectType.additional_methods.SetValue]
+
+            body = "[](StepData_SelectType &self , py::object& ent){self.SetValue(cast_pyobject<Standard_Transient>(ent));}"
+            help = "SetValue supporting python objects"
+            arguments  = ["ent"]
+
+    [Modules.LDOM]
+
+        exclude_classes = ["LDOMString","LDOM_MemManager","LDOM_BasicText"]
+        exclude_methods = ["LDOM_BasicAttribute::SetValue"]
+
+    [Modules.PCDM]
+
+        exclude_classes = ["PCDM_DOMHeaderParser"]
+
+        [Modules.PCDM.parsing_headers]
+
+            "PCDM_ReadWriter.hxx" = "#include <Standard_IStream.hxx>"
+            "PCDM_ReadWriter_1.hxx" = "#include <Standard_IStream.hxx>"
+
+    [Modules.ShapeAnalysis]
+
+        exclude_classes = ["ShapeAnalysis_BoxBndTreeSelector"]
+
+    [Modules.V3d]
+
+        include_header_pre = """struct NSOpenGLContext {}; //OSX related"""
+
+    [Modules.STEPCAFControl]
+
+        include_header_pre = """
+        #include <istream>
+        #include <ostream>
+
+        using std::basic_ostream;
+        using std::basic_istream;
+        using std::char_traits;
+
+        #include <DE_ConfigurationContext.hxx>
+        #include <XCAFDoc_ShapeTool.hxx>
+        #include <XSAlgo_ShapeProcessor.hxx>
+        """
+
+        exclude_typedefs = ["STEPCAFControl_DataMapOfShapePD","STEPCAFControl_DataMapOfShapePD",
+            "STEPCAFControl_DataMapOfSDRExternFile","STEPCAFControl_DataMapOfSDRExternFile",
+            "STEPCAFControl_DataMapOfPDExternFile","STEPCAFControl_DataMapOfLabelExternFile",
+            "STEPCAFControl_DataMapOfShapeSDR"]
+
+        [Modules.STEPCAFControl.parsing_headers]
+
+            "STEPCAFControl_Writer.hxx" = "#include <NCollection_Vector.hxx>"
+
+    [Modules.XCAFDimTolObjects]
+
+        exclude_typedefs = ["XCAFDimTolObjects_DataMapOfToleranceDatum"]
+
+    [Modules.XCAFPrs]
+
+        include_header_pre = """#include <Image_SupportedFormats.hxx>
+#include <Image_CompressedPixMap.hxx>"""
+        exclude_typedefs = ["XCAFPrs_DataMapOfStyleTransient"]
+
+    [Modules.AdvApp2Var]
+
+        include_header_pre_top ="""#ifdef WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#endif
+"""
+        exclude_classes = ["AdvApp2Var_MathBase"]
+
+    [Modules.BOPAlgo]
+
+        include_header_pre = """#include <BOPDS_Iterator.hxx>
+#include <BOPDS_DS.hxx>
+"""
+
+    [Modules.VrmlAPI]
+
+        include_header_pre = "#include <VrmlConverter_Drawer.hxx>"
+
+    [Modules.Vrml]
+
+        include_header_pre = """
+        #include <DE_ConfigurationContext.hxx>
+        #include <TDocStd_Document.hxx>
+        #include <XSControl_WorkSession.hxx>
+        #include <TopoDS_Shape.hxx>"""
+
+    [Modules.IFSelect]
+
+        include_header_pre = """#include <istream>
+using std::basic_istream;
+using std::char_traits;"""
+
+    [Modules.XSControl]
+
+        include_header_pre = """#include <istream>
+using std::basic_istream;
+using std::char_traits;
+#include <XSAlgo_ShapeProcessor.hxx>
+#include <DE_ShapeFixParameters.hxx>
+"""
+
+    [Modules.Message]
+
+        exclude_classes = ["Message_LazyProgressScope"]
+
+        [Modules.Message.Classes.Message_ProgressScope]
+
+            exclude_constructors = [1]
+
+    [Modules.RWGltf]
+
+        include_header_pre = """#include <istream>
+#include <DE_ConfigurationContext.hxx>
+#include <XSControl_WorkSession.hxx>
+using std::basic_istream;
+using rapidjson::BasicOStreamWrapper;"""
+
+        exclude_methods = ["RWGltf_GltfMaterialMap::AddGlbImages", "RWGltf_GltfJsonParser::SetStream"]
+        exclude_typedefs = ["RWGltf_GltfFaceList"]
+
+        [Modules.RWGltf.parsing_headers]
+
+            "RWGltf_GltfOStreamWriter.hxx" = "#include <rapidjson/rapidjson.h>"
+
+
+    [Modules.BRepApprox]
+
+        [Modules.BRepApprox.parsing_headers]
+
+            "BRepApprox_SurfaceTool.hxx" = "#include <BRepAdaptor_Surface.hxx>"
+            "BRepApprox_TheMultiLineToolOfApprox.hxx" = """
+            #include <Approx_Status.hxx>
+            """
+
+    [Modules.IntPatch]
+
+        [Modules.IntPatch.parsing_headers]
+
+            "IntPatch_PolyhedronTool.hxx" = "#include <IntPatch_Polyhedron.hxx>"
+
+
+    [Modules.HLRAlgo]
+
+        [Modules.HLRAlgo.parsing_headers]
+
+            "HLRAlgo_HArray1OfPHDat.hxx" = "#include <gp_XYZ.hxx>"
+            "HLRAlgo_Array1OfPHDat.hxx" = "#include <gp_XYZ.hxx>"
+            "HLRAlgo_PolyHidingData.hxx" = "#include <gp_XYZ.hxx>"
+            "HLRAlgo_PolyShellData.hxx" = "#include <HLRAlgo_PolyData.hxx>"
+
+    [Modules.ShapeUpgrade]
+
+        [Modules.ShapeUpgrade.parsing_headers]
+
+            "ShapeUpgrade_UnifySameDomain.hxx" = "#include <Precision.hxx>"
+
+    [Modules.IntTools]
+
+        [Modules.IntTools.parsing_headers]
+
+            "IntTools_SurfaceRangeSampleMapHasher.hxx" = "#include <IntTools_SurfaceRangeSample.hxx>"
+            "IntTools_CurveRangeSampleMapHasher.hxx" = "#include <IntTools_CurveRangeSample.hxx>"
+            "IntTools_EdgeFace.hxx" = "#include <Precision.hxx>"
+
+    [Modules.BRepOffset]
+
+        [Modules.BRepOffset.parsing_headers]
+
+            "BRepOffset_Inter2d.hxx" = "#include <TopoDS_Edge.hxx>"
+
+    [Modules.StdPrs]
+
+        [Modules.StdPrs.parsing_headers]
+
+            "StdPrs_HLRShape.hxx" = "#include <TopoDS_Shape.hxx>"
+            "StdPrs_Vertex.hxx" = "#include <Prs3d_Presentation.hxx>"
+            "StdPrs_Point.hxx" = "#include <Prs3d_Presentation.hxx>"
+
+    [Modules.Interface]
+
+        [Modules.Interface.parsing_headers]
+
+            "Interface_ValueInterpret.hxx" = "#include <Interface_TypedValue.hxx>"
+
+        [Modules.Interface.Classes.Interface_InterfaceModel.additional_methods.AddEntity]
+
+            body = "[](Interface_InterfaceModel &self , py::object& ent){self.AddEntity(cast_pyobject<Standard_Transient>(ent));}"
+            help = "AddEntity supporting python objects"
+            arguments  = ["anEnt"]
+
+        [Modules.Interface.Classes.Interface_InterfaceModel.additional_methods.AddWithRefs]
+
+            body = "[](Interface_InterfaceModel &self , py::object& ent){self.AddWithRefs(cast_pyobject<Standard_Transient>(ent));}"
+            help = "AddWithRefs supporting python objects"
+            arguments  = ["anEnt"]
+
+    [Modules.IVtkVTK]
+
+        include_header_pre = """#include <vtkRenderer.h>
+#include "vtk_pybind.h" """
+
+    [Modules.IVtkTools]
+
+        include_header_pre = """#undef Handle
+#include <vtkRenderer.h>
+#include <vtkActor.h>
+#include <vtkInformationObjectBaseKey.h>"""
+
+        exclude_methods = ["IVtkTools_ShapePicker::Pick","IVtkTools_ShapePicker::pick",
+        "IVtkTools_SubPolyDataFilter::PrintSelf", "IVtkTools_DisplayModeFilter::PrintSelf"]
+
+    [Modules.IVtk]
+
+        exclude_typedefs = ["IVtk_PointIdList"]
+
+    [Modules.IVtkOCC]
+
+        exclude_methods = ["IVtkOCC_ShapePickerAlgo::Pick", "IVtkOCC_ViewerSelector::Pick"]
+
+    [Modules.BinLDrivers]
+
+        include_header_pre = "#include <PCDM_ReaderFilter.hxx>"
+
+    [Modules.BinObjMgt]
+
+        exclude_methods = ["BinObjMgt_Persistent::GetOStream", "BinObjMgt_Persistent::GetIStream"]
+
+    [Modules.GeomAdaptor]
+
+        include_header_pre = """#include <Geom_BezierCurve.hxx>
+#include <Geom_BSplineCurve.hxx>
+#include <Geom_OffsetCurve.hxx>
+"""
+
+    [Modules.GeomInt]
+
+        include_header_pre = """
+        #include <Geom2d_BSplineCurve.hxx>
+        #include <Approx_Status.hxx>
+        """
+
+        [Modules.GeomInt.parsing_headers]
+
+        "GeomInt_TheMultiLineToolOfWLApprox.hxx" = """
+        #include <Approx_Status.hxx>
+        """
+
+    [Modules.StepToGeom]
+
+        include_header_pre = """#include <StepKinematics_SpatialRotation.hxx>"""
+
+    [Modules.XmlDrivers]
+
+        include_header_pre = "#include <PCDM_ReaderFilter.hxx>"
+
+    [Modules.XmlLDrivers]
+
+        include_header_pre = "#include <PCDM_ReaderFilter.hxx>"
+
+    [Modules.BRepTools]
+
+        include_header_pre = "#include <OSD_FileSystem.hxx>"
+
+    [Modules.BRepTopAdaptor]
+
+        exclude_classes = ["BRepTopAdaptor_FClass2d"]
+
+        [Modules.BRepTopAdaptor.parsing_headers]
+
+        "BRepTopAdaptor_HVertex.hxx" = "#include <BRepAdaptor_Curve2d.hxx>"
+
+   [Modules.IGESAppli]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESBasic]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESDefs]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESDimen]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESDraw]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESGeom]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESGraph]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.IGESSolid]
+
+        module_parsing_header = "#include <Standard_OStream.hxx>"
+
+    [Modules.GeomConvert]
+
+        [Modules.GeomConvert.parsing_headers]
+
+        "GeomConvert_SurfToAnaSurf.hxx" = "class Geom_Curve; class gp_Ax3;"
+
+    [Modules.TopoDSToStep]
+
+        [Modules.TopoDSToStep.parsing_headers]
+
+        "TopoDSToStep_MakeTessellatedItem.hxx" = "class TopoDSToStep_Tool;"
+        "TopoDSToStep_MakeStepWire.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeShellBasedSurfaceModel.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeBrepWithVoids.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeStepVertex.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeGeometricCurveSet.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeStepEdge.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeStepFace.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeManifoldSolidBrep.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_MakeFacetedBrep.hxx" = "#include <StepData_Factors.hxx>"
+        "TopoDSToStep_WireframeBuilder.hxx" = "#include <StepData_Factors.hxx>"
+        
+
+    [Modules.XCAFDoc]
+
+        [Modules.XCAFDoc.parsing_headers]
+        "XCAFDoc_AssemblyTool.hxx" = "#include <TDF_Label.hxx>"
+        "XCAFDoc_AssemblyIterator.hxx" = "#include <TDF_Label.hxx>"
+        "XCAFDoc_AssemblyGraph.hxx" = "#include <TDF_Label.hxx>"
+
+    [Modules.DE]
+
+        exclude_typedefs = ["DE_ConfigurationVendorMap", "DE_ConfigurationFormatMap"]
+
+    [Modules.StepVisual]
+
+        include_header_pre = "#include <StepRepr_RepresentationContext.hxx>"
+
+    [Modules.STEPControl]
+
+        include_header_pre = """
+        #include <IFSelect_ReturnStatus.hxx>
+        #include <istream>
+        #include <ostream>
+
+        using std::basic_ostream;
+        using std::basic_istream;
+        using std::char_traits;
+
+        #include <XSAlgo_ShapeProcessor.hxx>
+        """
+
+    [Modules.IMeshTools]
+
+        include_header_pre = """
+        #include <IMeshData_Face.hxx>"""
+
+    [Modules.GeomToStep]
+
+         [Modules.GeomToStep.parsing_headers]
+
+         "GeomToStep_MakeHyperbola.hxx" = "#include <StepData_Factors.hxx>"
+
+    [Modules.StepToTopoDS]
+
+        include_header_pre_top = "#include <StepData_Factors.hxx>"
+
+        [Modules.StepToTopoDS.parsing_headers]
+
+        "StepToTopoDS_TranslateEdgeLoop.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateShell.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateSolid.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateCurveBoundedSurface.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateCompositeCurve.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_Builder.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_MakeTransformed.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateFace.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateVertex.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateEdge.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslatePolyLoop.hxx" = "#include <StepData_Factors.hxx>"
+        "StepToTopoDS_TranslateVertexLoop.hxx" = "#include <StepData_Factors.hxx>"
+
+    [Modules.APIHeaderSection]
+
+        include_header_pre = """
+        #include <HeaderSection_FileName.hxx>
+        #include <HeaderSection_FileSchema.hxx>
+        #include <HeaderSection_FileDescription.hxx>"""
+
+    [Modules.IGESCAFControl]
+
+        include_header_pre = "#include <DE_ConfigurationContext.hxx>"
+
+    [Modules.IGESToBRep]
+
+        include_header_pre_top = "#include <XSAlgo_ShapeProcessor.hxx>" 
+ 
+    [Modules.IGESControl]
+
+        include_header_pre_top = "#include <XSAlgo_ShapeProcessor.hxx>"
+
+    [Modules.StepAP214]
+
+        include_header_pre = "#include <Interface_InterfaceModel.hxx>"
+
+    [Modules.math]
+
+        exclude_methods = ["math_Matrix::operator="] # move assignemnt operator...
+
+    [Modules.TopTools]
+
+        include_header_pre = """
+        #include  "NCollection_tmpl.hxx"
+        #include  <Bnd_Box.hxx>
+        """
+
+
+    [Modules.XBRepMesh]
+
+        include_header_pre = """
+        #include <TopoDS_Shape.hxx>
+        #include <BRepMesh_DiscretRoot.hxx>
+        """
+
+    [Modules.Geom2d]
+
+        include_header_pre = """
+        #include <Geom2dEval_RepCurveDesc.hxx>
+        """
+
+    [Modules.Geom]
+
+        include_header_pre = """
+        #include <GeomEval_RepSurfaceDesc.hxx>
+        #include <GeomEval_RepCurveDesc.hxx>
+        """
+
+    [Modules.RWMesh]
+
+        include_header_pre = "#include <OSD_FileSystem.hxx>"
+
+    [Modules.Extrema]
+
+        exclude_typedefs = ["Extrema_ECC","Extrema_ECC2d","Extrema_EPCOfELPCOfLocateExtPC",
+          "Extrema_EPCOfELPCOfLocateExtPC2d","Extrema_ELPCOfLocateExtPC","Extrema_ELPCOfLocateExtPC2d"
+        ]
+
+    [Modules.Bnd]
+
+        exclude_typedefs = ["Bnd_B2d","Bnd_B2f","Bnd_B3d","Bnd_B3f"]
