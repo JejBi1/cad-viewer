@@ -1,0 +1,17 @@
+[package]
+name = "xtask"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Release tooling: static OCCT build, dist (installer stage, portable zip, size report), notices"
+
+[dependencies]
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2 = "0.11"
+xz-native = "1"
+zip = { version = "9", default-features = false, features = ["deflate-flate2"] }
+# the pure-Rust deflate backend (zip's `deflate-flate2` leaves the backend choice to the application)
+flate2 = { version = "1", default-features = false, features = ["rust_backend"] }

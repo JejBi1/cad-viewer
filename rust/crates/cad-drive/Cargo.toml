@@ -1,0 +1,30 @@
+[package]
+name = "cad-drive"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+# HTTPS over rustls. No gzip: downloads must arrive byte for byte, so the declared
+# size and the md5 checksum can be verified. The platform verifier uses the Windows
+# certificate store, which keeps company proxies with their own root certificate working.
+ureq = { version = "3", default-features = false, features = ["rustls", "platform-verifier"] }
+sha2 = "0.11"
+md-5 = "0.11"
+base64 = "0.23"
+getrandom = "0.4"
+open = "5"
+# The `keyring` crate picks the native store (Windows Credential Manager, Secret Service,
+# Keychain). `keyring-core` gives the Entry type so tests can use its in-memory mock store.
+keyring = "4"
+keyring-core = "1"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.56"
+
+[dev-dependencies]
+tempfile = "3"

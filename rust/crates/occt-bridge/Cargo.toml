@@ -1,0 +1,21 @@
+[package]
+name = "occt-bridge"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+build = "build.rs"
+
+[features]
+default = []
+# Link OCCT as static libraries (built by `cargo xtask occt-static` into ~/.local/occt-static, or OCCT_STATIC_PREFIX)
+# instead of the OCCT DLLs found through OCCT_PREFIX. The C runtime must match the libraries: build with
+# `-C target-feature=+crt-static` (flavour `mt`, the default of occt-static) or without it (`--crt dynamic`, `md`).
+static-occt = []
+
+[dependencies]
+cad-types.workspace = true
+cxx.workspace = true
+
+[build-dependencies]
+cxx-build.workspace = true

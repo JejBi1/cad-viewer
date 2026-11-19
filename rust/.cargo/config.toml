@@ -1,0 +1,3 @@
+# `cargo xtask <command>` (run from rust/): release tooling in rust/xtask. Only the alias lives here, no build settings.
+[alias]
+xtask = "run --release --package xtask --"
