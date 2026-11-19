@@ -1,0 +1,19 @@
+[package]
+name = "cad-2d"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+cad-types.workspace = true
+thiserror.workspace = true
+image.workspace = true
+tempfile.workspace = true
+memchr = "2"
+encoding_rs = "0.8"
+ttf-parser = "0.25"
+earcutr = "0.5"
+rayon.workspace = true
+
+[dev-dependencies]

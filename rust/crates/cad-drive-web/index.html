@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAD prohlížeč – otevření souboru z Google Drive</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>CAD prohlížeč</h1>
+
+<p id="status" role="status">Připravuji otevření souboru z Google Drive…</p>
+
+<noscript>
+<p class="problem">Pro otevření souboru je potřeba povolit JavaScript a WebAssembly.</p>
+</noscript>
+
+<section id="error" hidden>
+<h2>Soubor se nepodařilo otevřít</h2>
+<p id="error-text" role="alert"></p>
+<p>Zavřete tuto stránku a zkuste soubor znovu otevřít přes „Otevřít v aplikaci“ → „CAD prohlížeč“ na Google Drive.</p>
+</section>
+
+<section id="help" hidden>
+<h2>CAD prohlížeč se nespustil?</h2>
+<p>Aplikace CAD prohlížeč musí být v tomto počítači nainstalovaná a musí mít zaregistrované odkazy Google Drive (v aplikaci: šipka vedle tlačítka „Otevřít“ → Zaregistrovat odkazy Google Drive). Pokud prohlížeč zobrazil dotaz na spuštění aplikace, potvrďte ho.</p>
+<p>Ve stejné nabídce jde odkazy zase odregistrovat (Odregistrovat odkazy Google Drive) a zapomenout přihlášení ke Google Drive (Odhlásit se z Google Drive).</p>
+<p><a id="open-link" class="button">Zkusit znovu otevřít v CAD prohlížeči</a></p>
+<p><a id="download-link" class="button secondary" rel="noopener noreferrer" hidden>Stáhnout CAD prohlížeč</a></p>
+<p id="download-missing" hidden>Odkaz ke stažení aplikace není v této verzi stránky nastavený. Obraťte se na správce, od kterého jste aplikaci dostali.</p>
+</section>
+</main>
+<script type="module" src="loader.js"></script>
+</body>
+</html>

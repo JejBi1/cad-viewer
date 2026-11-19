@@ -1,0 +1,25 @@
+[package]
+name = "cad-drive-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+# cdylib is what wasm-bindgen turns into the page's module. rlib keeps native tests and
+# `cargo check` of the whole workspace working.
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Browser bindings exist only for the wasm target, so native workspace builds never see them.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = ["Window", "Document", "Element", "Location", "Node"] }
+
+[dev-dependencies]
+# Used by one test that checks both crates apply the same file id rule.
+cad-drive = { workspace = true }

@@ -1,0 +1,69 @@
+[workspace]
+resolver = "3"
+members = ["crates/cad-types", "crates/occt-bridge", "crates/cad-core", "crates/cad-2d", "crates/cad-render", "crates/cad-app", "crates/cad-drive", "crates/cad-drive-web", "xtask"]
+
+[workspace.package]
+version = "2.0.0"
+edition = "2024"
+license = "GPL-3.0-only"
+publish = false
+
+[workspace.dependencies]
+cad-types = { path = "crates/cad-types" }
+occt-bridge = { path = "crates/occt-bridge" }
+cad-core = { path = "crates/cad-core" }
+cad-2d = { path = "crates/cad-2d" }
+cad-render = { path = "crates/cad-render" }
+cad-drive = { path = "crates/cad-drive" }
+# `wgpu_no_default_features`, not `wgpu`: the latter enables egui-wgpu's default features, which turn on every wgpu backend
+# (GL, Vulkan, Metal, WebGL). The backend of each platform is chosen in cad-render/Cargo.toml (ARCHITECTURE.md, "Size budget").
+eframe = { version = "0.37", default-features = false, features = ["wgpu_no_default_features", "default_fonts", "persistence", "wayland", "x11"] }
+egui = "0.37"
+cxx = "1.0"
+cxx-build = "1.0"
+thiserror = "2"
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha1 = "0.11"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "tiff", "bmp"] }
+rfd = "0.18"
+arboard = "3"
+windows-sys = "0.61"
+bytemuck = { version = "1", features = ["derive"] }
+glam = "0.34"
+rayon = "1"
+log = "0.4"
+env_logger = "0.11"
+tempfile = "3"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
+strip = true
+
+# `cargo xtask dist`: the smallest executable (ARCHITECTURE.md, "Size budget"). Fat LTO, one codegen unit, size
+# optimisation, symbols stripped, no debug info. Hot crates get their own `[profile.dist.package.<crate>] opt-level = 3`
+# once a profile shows that size optimisation costs measurable speed there (cad-2d, cad-render, cad-core are the
+# candidates); none is measured yet. `panic = "abort"` is left out on purpose: it would change the behaviour of every
+# catch_unwind in the application, so it is a decision for cad-app, not for the release profile.
+[profile.dist]
+inherits = "release"
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
+strip = true
+debug = false
+incremental = false
+
+# Measured 2026-11-19 (cad-2d load + scene, best of 3): opt-level "s" is 1.2-2x slower than 3 on large drawings
+# (mixed_25k_texts 5.6-7.4 s vs 3.8 s, dims_30k 3.4-4.2 s vs 2.6 s) for 0.5 MB of code. Hot crates are optimised for speed.
+[profile.dist.package.cad-2d]
+opt-level = 3
+
+[profile.dist.package.cad-render]
+opt-level = 3
+
+[profile.dist.package.cad-core]
+opt-level = 3

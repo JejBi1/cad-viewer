@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Application manifest of StepViewer.exe (compiled in by build.rs as RT_MANIFEST, resource id 1).
+     longPathAware: paths over 260 characters are used by the file readers (Open CASCADE reads through the old Win32
+     path functions); without this the 3D readers fail on such paths.
+     dpiAwareness: the same as winit sets at run time (PerMonitorV2, falling back to PerMonitor); winit's own call then
+     simply finds the awareness already set. No common-controls dependency: eframe and rfd do not need version 6 here. -->
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings>
+      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2, PerMonitor</dpiAwareness>
+      <longPathAware xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">true</longPathAware>
+    </windowsSettings>
+  </application>
+</assembly>

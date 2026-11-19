@@ -1,0 +1,27 @@
+[package]
+name = "cad-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+cad-types.workspace = true
+eframe.workspace = true
+bytemuck.workspace = true
+glam.workspace = true
+image.workspace = true
+thiserror.workspace = true
+ab_glyph = "0.2"
+
+# One graphics API per platform (ARCHITECTURE.md, "Size budget"): DX12 on Windows, Vulkan elsewhere, no GL, no Metal.
+# Features add up per target, and eframe leaves the wgpu defaults off, so only these backends are compiled.
+[target.'cfg(windows)'.dependencies]
+wgpu = { version = "30", default-features = false, features = ["std", "wgsl", "dx12"] }
+
+[target.'cfg(unix)'.dependencies]
+wgpu = { version = "30", default-features = false, features = ["std", "wgsl", "vulkan"] }
+
+[dev-dependencies]
+cad-2d.workspace = true
+tempfile.workspace = true
