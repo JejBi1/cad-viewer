@@ -88,7 +88,7 @@ pub fn format_geometry(x: f32, y: f32, w: f32, h: f32, maximized: bool) -> Strin
 
 /// The window icon (`stepview.png`).
 pub fn window_icon() -> Option<egui::IconData> {
-    const PNG: &[u8] = include_bytes!("../../../../stepview/stepview.png");
+    const PNG: &[u8] = include_bytes!("../../../../assets/stepview.png");
     let img = image::load_from_memory(PNG).ok()?.to_rgba8();
     let (width, height) = img.dimensions();
     Some(egui::IconData { rgba: img.into_raw(), width, height })

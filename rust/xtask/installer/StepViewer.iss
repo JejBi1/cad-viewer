@@ -52,7 +52,7 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir={#OutDir}
 OutputBaseFilename=CadProhlizec_setup_{#AppVersion}{#Suffix}
-SetupIconFile={#RepoDir}\stepview\stepview.ico
+SetupIconFile={#RepoDir}\assets\stepview.ico
 UninstallDisplayIcon={app}\{#AppExe}
 UninstallDisplayName={#AppName}
 ; smallest installer: LZMA2, 64 MB dictionary, one solid block

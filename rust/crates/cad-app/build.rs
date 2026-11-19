@@ -1,7 +1,7 @@
 //! Windows link settings and resources of `StepViewer.exe`:
 //! * a main-thread stack of 64 MiB: Open CASCADE recurses deeply on nested assemblies and the window thread also calls
 //!   it (mass, bounds, measuring), while Windows gives a thread 1 MiB by default;
-//! * one resource script, compiled with `rc.exe` when it can be found: the program icon (`stepview/stepview.ico`), the
+//! * one resource script, compiled with `rc.exe` when it can be found: the program icon (`assets/stepview.ico`), the
 //!   application manifest (`app.manifest`: long path awareness and DPI awareness) and the version resource (Explorer
 //!   "Properties", installer and uninstaller). The version comes from the workspace version (`CARGO_PKG_VERSION`), so
 //!   `2.0.0` gives FileVersion 2.0.0.0. Without `rc.exe` the program works, with the default icon, no version
@@ -21,7 +21,7 @@ fn main() {
     }
     println!("cargo:rustc-link-arg-bins=/STACK:{STACK}");
     let manifest_dir = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").unwrap_or_default());
-    let icon = manifest_dir.join("..").join("..").join("..").join("stepview").join("stepview.ico");
+    let icon = manifest_dir.join("..").join("..").join("..").join("assets").join("stepview.ico");
     println!("cargo:rerun-if-changed={}", icon.display());
     let app_manifest = manifest_dir.join("app.manifest");
     println!("cargo:rerun-if-changed={}", app_manifest.display());

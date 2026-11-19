@@ -349,7 +349,7 @@ fn dwg_files(tc: &Toolchain) -> Result<Vec<(PathBuf, String)>> {
 }
 
 fn repo_license(name: &str) -> PathBuf {
-    util::repo_root().join("installer").join("licenses").join(name)
+    util::rust_dir().join("xtask").join("installer").join("licenses").join(name)
 }
 
 /// (file name in `licenses/`, content source)

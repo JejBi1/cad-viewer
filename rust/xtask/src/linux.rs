@@ -70,9 +70,9 @@ pub fn command(mut args: Args) -> Result<()> {
         util::copy_file(&repo.join("linux").join(f), &pkg.join(f))?;
     }
     set_exec_file(&pkg.join("install.sh"))?;
-    util::copy_file(&repo.join("stepview").join("stepview.png"), &pkg.join("cad-viewer.png"))?;
+    util::copy_file(&repo.join("assets").join("stepview.png"), &pkg.join("cad-viewer.png"))?;
     for f in ["GPL-3.0-only.txt", "LGPL-2.1-only.txt"] {
-        util::copy_file(&repo.join("installer").join("licenses").join(f), &pkg.join("licenses").join(f))?;
+        util::copy_file(&util::rust_dir().join("xtask").join("installer").join("licenses").join(f), &pkg.join("licenses").join(f))?;
     }
     util::copy_file(
         &prefix.join("share").join("doc").join("opencascade").join("OCCT_LGPL_EXCEPTION.txt"),
