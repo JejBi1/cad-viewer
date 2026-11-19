@@ -25,6 +25,7 @@ pub const WARM_MAX_AGE: Duration = Duration::from_secs(105);
 pub const SERVE_FLAG: &str = "--worker-serve";
 /// Command-line flag that runs one load directly (`--worker <src> <dst>`).
 pub const WORKER_FLAG: &str = "--worker";
+#[cfg_attr(not(windows), allow(dead_code))]
 const CREATE_NO_WINDOW: u32 = 0x0800_0000;
 const HANDOVER_TEXT: &str = "Předávám model…";
 const UNKNOWN_ERROR_TEXT: &str = "neznámá chyba";

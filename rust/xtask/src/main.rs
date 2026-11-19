@@ -24,7 +24,7 @@ cargo xtask <command> [options]
                   [--build-occt] [--crt static|dynamic] [--occt-opt speed|size] [--profile NAME]
   notices       Regenerate rust/xtask/installer/THIRD_PARTY_NOTICES.txt from cargo metadata
                   [--no-dwg] [--out FILE] [--check]
-  linux-dist    Linux tar.gz / AppImage + size report (NOT RUN yet: to be run on the Ubuntu build host)
+  linux-dist    Linux tar.gz / AppImage + size report (run on the Ubuntu 22.04 build host)
                   [--out DIR] [--target-dir DIR] [--no-dwg] [--no-build] [--dwg2dxf FILE]
   help          This text
 ";

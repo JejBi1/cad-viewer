@@ -224,7 +224,8 @@ mod tests {
 
     #[test]
     fn resolve_follows_ezdxf_order_and_refuses_remote_names_without_probing() {
-        let dir = Path::new("C:\\drawings");
+        let (root, abs_str) = if cfg!(windows) { ("C:\\drawings", "D:\\archive\\plan.png") } else { ("/drawings", "/archive/plan.png") };
+        let dir = Path::new(root);
         let wanted = dir.join("scans").join("plan.png");
         // relative to the drawing folder
         let got = resolve_path(Some(dir), "scans\\plan.png", &mut |p| p == wanted.as_path());
@@ -234,8 +235,8 @@ mod tests {
         let got = resolve_path(Some(dir), "D:\\old\\plan.png", &mut |p| p == by_name.as_path());
         assert_eq!(got, Some(by_name.clone()));
         // an absolute name that exists is used as it is
-        let abs = Path::new("D:\\archive\\plan.png");
-        let got = resolve_path(Some(dir), "D:\\archive\\plan.png", &mut |p| p == abs);
+        let abs = Path::new(abs_str);
+        let got = resolve_path(Some(dir), abs_str, &mut |p| p == abs);
         assert_eq!(got.as_deref(), Some(abs));
         // nothing found, no drawing folder: no probe at all
         let mut calls = 0;

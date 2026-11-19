@@ -4,12 +4,11 @@
 //! * `cad-viewer-<ver>[-nodwg]-x86_64.AppImage`   only when `appimagetool` is found (otherwise skipped, not an error)
 //! * `size-report.txt`, `size-report.json`, `SHA256SUMS.txt`
 //!
-//! NOT RUN: written and type-checked on Windows only; nothing in this file has been executed on Linux. It replaces
-//! `linux/build_linux.sh` for the Rust program and must be run on the Ubuntu 22.04 build host (`linux/setup_build_env.sh`)
-//! and its output inspected before it is trusted. Also untested: `occt-static` with GCC (`-DUSE_XLIB=OFF`) and the Linux
-//! branch of `crates/occt-bridge/build.rs`.
-//! Prerequisites on that host: Rust, cmake, ninja, gcc/g++, curl, tar; `cargo xtask occt-static`; for the full variant the
-//! LibreDWG converter `dwg2dxf` (built by `linux/setup_build_env.sh` into /opt/libredwg/bin, or given with `--dwg2dxf FILE`).
+//! Verified on the Ubuntu 22.04 build host (`cadbuild`, glibc 2.35): `occt-static` with GCC (`-DUSE_XLIB=OFF`),
+//! the Linux branch of `crates/occt-bridge/build.rs`, and `cargo xtask linux-dist` (`tar.gz` + `AppImage`).
+//! Prerequisites on that host: Rust, cmake, ninja, gcc/g++, curl, tar, `libwayland-dev` (for `wayland-sys`),
+//! `libvulkan1` / `mesa-vulkan-drivers` (for headless Vulkan tests); `cargo xtask occt-static`; for the full variant
+//! the LibreDWG converter `dwg2dxf` (built by `linux/setup_build_env.sh` into `/opt/libredwg/bin`, or given with `--dwg2dxf FILE`).
 //! The C/C++ side has no path remapping yet (GCC `-ffile-prefix-map` would need quoting, the repository path has spaces),
 //! so build-machine paths may remain in the binary; the Rust side gets the same `--remap-path-prefix` as on Windows.
 use crate::dist::{self, BuildFacts};

@@ -311,13 +311,10 @@ fn a_crash_inside_occt_becomes_an_error() {
 }
 
 /// Fault points of the C++ side (`bridge.h`). A fault is injected for the thread that makes the call.
-#[cfg(windows)]
 const FAULT_FACE_NORMAL: u32 = 1;
-#[cfg(windows)]
 const FAULT_READ_STL: u32 = 2;
 
 /// Runs `f` on a thread of its own and fails when it does not end in `secs` (a lock that was left locked).
-#[cfg(windows)]
 fn within<T: Send + 'static>(secs: u64, what: &str, f: impl FnOnce() -> T + Send + 'static) -> T {
     let (tx, rx) = std::sync::mpsc::channel();
     std::thread::Builder::new()
@@ -330,7 +327,6 @@ fn within<T: Send + 'static>(secs: u64, what: &str, f: impl FnOnce() -> T + Send
         .unwrap_or_else(|_| panic!("{what}: no answer in {secs} s"))
 }
 
-#[cfg(windows)]
 #[test]
 fn a_hardware_fault_while_the_normal_of_a_face_is_found_is_no_normal_and_not_the_end_of_the_process() {
     big_stack(|| {
@@ -353,7 +349,6 @@ fn a_hardware_fault_while_the_normal_of_a_face_is_found_is_no_normal_and_not_the
     });
 }
 
-#[cfg(windows)]
 #[test]
 fn a_hardware_fault_while_an_stl_is_read_leaves_no_lock_behind() {
     let dir = TempDir::new("stl-fault");

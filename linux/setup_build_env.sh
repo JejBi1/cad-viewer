@@ -7,13 +7,13 @@ HERE="$(cd "$(dirname "$0")" && pwd)"        # STEP_viewer/linux
 
 apt-get update -q
 apt-get install -y -q --no-install-recommends \
-    python3 python3-venv python3-dev build-essential pkg-config ca-certificates curl wget file xz-utils \
+    python3 python3-venv python3-dev build-essential pkg-config cmake ninja-build ca-certificates curl wget file xz-utils \
     binutils patchelf desktop-file-utils \
     libgl1 libegl1 libglu1-mesa libopengl0 libfontconfig1 libfreetype6 libdbus-1-3 libglib2.0-0 \
     libxkbcommon0 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 \
     libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-xinerama0 libxcb-xkb1 libxcb-xfixes0 \
-    libx11-xcb1 libxrender1 libxi6 libsm6 libice6 libxext6 libwayland-client0 libwayland-cursor0 libwayland-egl1 \
-    libpcre2-8-0 libiconv-hook1 fonts-dejavu-core xvfb xauth libgl1-mesa-dri libglx-mesa0 x11-utils imagemagick
+    libx11-xcb1 libxrender1 libxi6 libsm6 libice6 libxext6 libwayland-client0 libwayland-cursor0 libwayland-egl1 libwayland-dev \
+    libvulkan1 mesa-vulkan-drivers libpcre2-8-0 libiconv-hook1 fonts-dejavu-core xvfb xauth libgl1-mesa-dri libglx-mesa0 x11-utils imagemagick
 
 # Python 3.11 (OCP 8 wheels are cp311+; Ubuntu 22.04 ships 3.10) from deadsnakes
 if ! command -v python3.11 >/dev/null; then

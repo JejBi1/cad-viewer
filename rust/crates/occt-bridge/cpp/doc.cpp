@@ -8,6 +8,9 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 #include <windows.h>
+#else
+#include <setjmp.h>
+#include <signal.h>
 #endif
 
 #include "bridge.h"
@@ -87,7 +90,70 @@ unsigned long run_guarded(void (*fn)(void*), void* arg) {
   }
 }
 #else
+namespace {
+__thread sigjmp_buf* g_guard_jmp = nullptr;
+std::once_flag g_sig_once;
+constexpr int kGuardSignals[] = {SIGSEGV, SIGBUS, SIGFPE, SIGILL};
+struct sigaction g_prev_act[4]{};
+
+const struct sigaction* prev_action_for(int sig) {
+  for (size_t i = 0; i < 4; ++i) {
+    if (kGuardSignals[i] == sig) return &g_prev_act[i];
+  }
+  return nullptr;
+}
+
+void guard_signal_handler(int sig, siginfo_t* info, void* uctx) {
+  sigjmp_buf* target = g_guard_jmp;
+  if (target != nullptr) {
+    g_guard_jmp = nullptr;
+    siglongjmp(*target, sig);
+  }
+  if (const struct sigaction* prev = prev_action_for(sig)) {
+    if ((prev->sa_flags & SA_SIGINFO) != 0 && prev->sa_sigaction != nullptr) {
+      prev->sa_sigaction(sig, info, uctx);
+      return;
+    }
+    if (prev->sa_handler == SIG_IGN) return;
+    if (prev->sa_handler != SIG_DFL && prev->sa_handler != nullptr) {
+      prev->sa_handler(sig);
+      return;
+    }
+  }
+  struct sigaction dfl{};
+  dfl.sa_handler = SIG_DFL;
+  sigemptyset(&dfl.sa_mask);
+  sigaction(sig, &dfl, nullptr);
+  if (info != nullptr && info->si_code <= 0) {
+    raise(sig);
+  }
+}
+
+void install_signal_handlers() {
+  struct sigaction sa{};
+  sa.sa_sigaction = guard_signal_handler;
+  sigemptyset(&sa.sa_mask);
+  sa.sa_flags = SA_SIGINFO | SA_ONSTACK;
+  for (size_t i = 0; i < 4; ++i) {
+    sigaction(kGuardSignals[i], &sa, &g_prev_act[i]);
+  }
+}
+
+struct JmpGuard {
+  sigjmp_buf* prev;
+  sigjmp_buf buf;
+  JmpGuard() : prev(g_guard_jmp) { g_guard_jmp = &buf; }
+  ~JmpGuard() { g_guard_jmp = prev; }
+};
+}  // namespace
+
 unsigned long run_guarded(void (*fn)(void*), void* arg) {
+  std::call_once(g_sig_once, install_signal_handlers);
+  JmpGuard jg;
+  int sig = sigsetjmp(jg.buf, 1);
+  if (sig != 0) {
+    return static_cast<unsigned long>(sig);
+  }
   fn(arg);
   return 0;
 }
@@ -105,6 +171,8 @@ void fault_point(uint32_t id) {
   g_fault = 0;  // once
 #ifdef _WIN32
   RaiseException(EXCEPTION_ACCESS_VIOLATION, 0, 0, nullptr);
+#else
+  raise(SIGSEGV);
 #endif
 }
 

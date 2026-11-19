@@ -605,13 +605,15 @@ mod tests {
     fn make_old(path: &Path, age: Duration) {
         let t = std::time::SystemTime::now() - age;
         let mut o = std::fs::OpenOptions::new();
-        o.write(true);
         #[cfg(windows)]
         {
+            o.write(true);
             // a folder is opened for its attributes with the backup semantics flag
             use std::os::windows::fs::OpenOptionsExt;
             o.custom_flags(0x0200_0000);
         }
+        #[cfg(not(windows))]
+        o.read(true);
         let f = o.open(path).expect("open the folder");
         f.set_modified(t).expect("set the time");
     }
@@ -1095,6 +1097,7 @@ mod tests {
         }
     }
 
+    #[cfg(windows)]
     fn grandparent(mode: &str) -> Command {
         let mut cmd = Command::new(std::env::current_exe().unwrap());
         cmd.args(["--exact", "dwg::tests::grandparent_for_the_pipe_test", "--nocapture", "--test-threads=1"]).env("CAD2D_TEST_GRANDPARENT", mode);

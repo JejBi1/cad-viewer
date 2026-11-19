@@ -50,14 +50,14 @@ class Fail : public std::runtime_error {
 /// Re-throws the exception being handled as a std::runtime_error with a readable message. Never returns.
 [[noreturn]] void rethrow_as_runtime();
 
-/// Runs `fn(arg)` and returns 0, or the code of a hardware exception (access violation and similar) that
-/// escaped from it. C++ exceptions pass through. Windows only; elsewhere it just calls `fn`.
+/// Runs `fn(arg)` and returns 0, or the code of a hardware exception (access violation / SIGSEGV and similar) that
+/// escaped from it. C++ exceptions pass through.
 unsigned long run_guarded(void (*fn)(void*), void* arg);
 
 /// Test support (`raw::test_inject_fault`): after `test_inject_fault(id)` the next `fault_point(id)` of the same thread
-/// raises a hardware fault (an access violation, as OCCT does on a damaged input) once; 0 switches it off. A few bridge functions call
+/// raises a hardware fault (an access violation / SIGSEGV, as OCCT does on a damaged input) once; 0 switches it off. A few bridge functions call
 /// `fault_point` inside their guarded region, so that the tests can check that such a fault becomes an error, leaves no
-/// lock behind and does not end the process. Windows only; inert elsewhere and whenever nothing was injected.
+/// lock behind and does not end the process. Inert whenever nothing was injected.
 void test_inject_fault(uint32_t id);
 void fault_point(uint32_t id);
 inline constexpr uint32_t FAULT_FACE_NORMAL = 1;
